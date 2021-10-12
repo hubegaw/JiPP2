@@ -1,0 +1,3 @@
+D:/JiPP/cwiczenie1/allocation_basics/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+D:/JiPP/cwiczenie1/allocation_basics/cmake-build-debug/CMakeFiles/cwiczenie1.dir
+D:/JiPP/cwiczenie1/allocation_basics/cmake-build-debug/CMakeFiles/edit_cache.dir
