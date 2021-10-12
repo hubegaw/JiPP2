@@ -1,0 +1,4 @@
+#ifndef SIMPLECALC_CALC_H
+#define SIMPLECALC_CALC_H
+
+#endif //SIMPLECALC_CALC_H
