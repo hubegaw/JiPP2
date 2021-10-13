@@ -10,7 +10,7 @@ void help() {
     std::cout << "\tDodawanie dwoch liczb ([a] i [b]) calkowitych." << std::endl;
     std::cout << "\nsubtract [a] [b]" << std::endl;
     std::cout << "\tOdejmowanie dwoch liczb ([a] i [b]) calkowitych." << std::endl;
-    std::cout << "\nvolume [a] [b] [c]" << std::endl;
+    std::cout << "\nvolume [a] [b] [c] [H]" << std::endl;
     std::cout << "\tObliczanie objetosci graniastoslupa prostego o podstawie trapezu z liczb ([a], [b], [c] i [H]) calkowitych." << std::endl;
     std::cout << "\nhelp " << std::endl;
     std::cout << "\twyswietla dokumentacje programu." << std::endl;
