@@ -4,6 +4,7 @@
 int liczPole(int a, int b);
 int liczPole(int a, int b, int h);
 int returnRandomNumber(int a, int b);
-int returnMaxValue(int tablica[], int rozmiar);
+int returnMaxValue(int array[], int size);
+void reverseArray(int array[], int size);
 
 #endif //CWICZENIE3_FUNCTIONS_H

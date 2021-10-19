@@ -14,16 +14,27 @@ int main() {
 
     cout << "\nlosowa liczba z przedzialu (" << a << ", " << b << ") to: " << returnRandomNumber(a, b);
 
-    int rozmiar;
+    int size;
 
     cout << "\n\nPodaj rozmiar tablicy alokowanej dynamicznie: ";
-    cin >> rozmiar;
-    int *tablica = new int[rozmiar];
+    cin >> size;
+    int *array = new int[size];
 
-    for(int i = 0; i < rozmiar; i++) {
-        tablica[i] = rand()%100;
+    for(int i = 0; i < size; i++) {
+        array[i] = rand()%100;
     }
-    cout << "Najwieksza wartosc w tablicy  to: " << returnMaxValue(tablica, rozmiar);
+    cout << "Najwieksza wartosc w tablicy  to: " << returnMaxValue(array, size);
+
+    cout << "\n\ntablica przed odwroceniem: ";
+    for(int i = 0; i < size; i++)
+        cout << array[i] << " ";
+
+    reverseArray(array, size);
+
+    cout << "\ntablica po odwroceniu: ";
+    for(int i = 0; i < size; i++)
+        cout << array[i] << " ";
+
 
     return 0;
 }

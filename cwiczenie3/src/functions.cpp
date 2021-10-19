@@ -15,12 +15,22 @@ int returnRandomNumber(int a, int b) {
     return rand()%(b-a) + a;
 }
 
-int returnMaxValue(int tablica[], int rozmiar) {
+int returnMaxValue(int array[], int size) {
     int temp=0;
 
-    for(int i = 0; i < rozmiar; i++) {
-        if(temp < tablica[i]) temp = tablica[i];
+    for(int i = 0; i < size; i++) {
+        if(temp < array[i]) temp = array[i];
     }
     return temp;
+}
+
+void reverseArray(int array[], int size) {
+    int temp, end = size - 1;
+    for(int i = 0; i < size/2; i++) {
+        temp = array[i];
+        array[i] = array[end];
+        array[end] = temp;
+        end--;
+    }
 }
 
