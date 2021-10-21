@@ -47,18 +47,27 @@ void pickGreaterThan0(int *number) {
     else return;
 }
 
-void sortArray(int array[]) {
+void sortArray(int *n1, int *n2, int *n3, int *n4, int *n5) {
     int i, x, j;
-    for (i = 1; i < sizeof(array)/sizeof(int); i++)
+    int sortedArray[5];
+    sortedArray[0] = *n1;
+    sortedArray[1] = *n2;
+    sortedArray[2] = *n3;
+    sortedArray[3] = *n4;
+    sortedArray[4] = *n5;
+
+    for (i = 1; i < 5; i++)
     {
-        x = array[i];
+        x = sortedArray[i];
         j = i - 1;
-        while (array[j] > x && j >= 0)
+        while (sortedArray[j] > x && j >= 0)
         {
-            array[j + 1] = array[j]; j--;
+            sortedArray[j + 1] = sortedArray[j]; j--;
         }
-        array[j + 1] = x;
+        sortedArray[j + 1] = x;
     }
+    for(i = 0; i<5; i++)
+        std::cout << sortedArray[i] << " ";
 }
 
 int assign(int x, int *w) {
@@ -70,19 +79,17 @@ int divide(int a, int b) {
     if(a%b != 0)
         throw std::invalid_argument("\nWynikiem dzielenia nie jest liczba calkowita\n");
     else if(b == 0)
-        throw std::invalid_argument("\nDzielnik jes zerem\n");
+        throw std::invalid_argument("\nDzielnik jest zerem\n");
     else
         return a/b;
 }
 
-int convert() {
-    std::cout << "\n\nWpisz dowolny ciag znakow do przekonwertowania na liczbe typu int: ";
-    char text[20];
-    fgets(text, 20, stdin);
-    if(!atoi(text))
+int convert(char text[]) {
+    char *end;
+    if(!strtol(text, &end, 10))
         throw std::invalid_argument("\nWprowadzony ciag zawiera nieprawidlowe znaki\n");
-    else if(sizeof(text) > 20)
-        throw std::invalid_argument("\nWprowadzona liczba jest za duza\n");
-    else return atoi(text);
+    else if(strtol(text, &end, 10) > 1000000000)
+        throw std::overflow_error("\nWprowadzona liczba jest za duza\n");
+    else return strtol(text, &end, 10);
 }
 

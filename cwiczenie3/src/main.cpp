@@ -64,7 +64,12 @@ int main() {
                 pickGreaterThan0(number_ptr);
             }
 
-            // sortArray(unsorted_array[10]);
+            int n1, n2, n3, n4, n5;
+            cout << "\n\nPodaj liczby nieposortowane: \n";
+            cin >> n1 >> n2 >> n3 >> n4 >> n5;
+
+            cout << "Liczby posortowane: \n";
+            sortArray(&n1, &n2, &n3, &n4, &n5);
 
             cout << "\n\nzmienna x przekazana do wskaznika = " << assign(x, w);
             break;
@@ -82,12 +87,18 @@ int main() {
                 return -1;
             }
 
-
+            std::cout << "\n\nWpisz dowolny ciag znakow do przekonwertowania na liczbe typu int: ";
+            char text[10];
+            cin >> text;
             try {
-            cout << "\nprzekonwertowany ciag znakow: " << convert();
+            cout << "\nprzekonwertowany ciag znakow: " << convert(text);
             }
-            catch(invalid_argument&e) {
-                cerr << e.what() << endl;
+            catch(invalid_argument&e1) {
+                cerr << e1.what() << endl;
+                return -1;
+            }
+            catch(overflow_error&e2) {
+                cerr << e2.what() << endl;
                 return -1;
             }
             break;
