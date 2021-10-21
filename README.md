@@ -1,4 +1,4 @@
 Repozytorium JiPP2
 
-Hubert Gawczyński
+Hubert Gawczyński,
 Wydział Informatyki i Telekomunikacji, kierunek Informatyka, semestr III
