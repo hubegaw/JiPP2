@@ -1,30 +1,24 @@
-#include "../include/MatrixLib.h"
-
-void help() {
-
-}
+#include "../include/matrixLib.h"
 
 //---------------------------------dodawanie dwóch macierzy---------------------------------
-void addMatrix(int **matrixA, int **matrixB, int *lineCount, int *columnCount) {
-    int matrix[*lineCount][*columnCount];
-
-    for(int i = 0; i < *lineCount; i++) {
-        for(int j = 0; j < *columnCount; j++) {
+int** addMatrix(int **matrixA, int **matrixB, int **matrix, int lineCount, int columnCount) {
+    for(int i = 0; i < lineCount; i++) {
+        for(int j = 0; j < columnCount; j++) {
             matrix[i][j] = matrixA[i][j] + matrixB[i][j];
         }
     }
+    return matrix;
 }
 
-void addMatrix(double **matrixA, double **matrixB, int *lineCount, int *columnCount) {
-    double matrix[*lineCount][*columnCount];
-
-    for(int i = 0; i < *lineCount; i++) {
-        for(int j = 0; j < *columnCount; j++) {
+double** addMatrix(double **matrixA, double **matrix, double **matrixB, int lineCount, int columnCount) {
+    for(int i = 0; i < lineCount; i++) {
+        for(int j = 0; j < columnCount; j++) {
             matrix[i][j] = matrixA[i][j] + matrixB[i][j];
         }
     }
+    return matrix;
 }
-
+/*
 //--------------------------------odejmowanie dwóch macierzy--------------------------------
 void subtractMatrix(int **matrixA, int **matrixB, int *lineCount, int *columnCount) {
     int matrix[*lineCount][*columnCount];
@@ -155,4 +149,4 @@ void sortRowsInMatrix(int **matrixA, int *lineCount, int *columnCount) {
 void sortRowsInMatrix(double **matrixA, int *lineCount, int *columnCount) {
 
 }
-
+*/

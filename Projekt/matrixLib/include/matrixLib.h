@@ -1,8 +1,11 @@
 #ifndef PROJEKT_MATRIXLIB_H
 #define PROJEKT_MATRIXLIB_H
 
-void addMatrix(int **matrixA, int **matrixB, int *lineCount, int *columnCount);
-void addMatrix(double **matrixA, double **matrixB, int *lineCount, int *columnCount);
+#include <iostream>
+using namespace std;
+
+int** addMatrix(int **matrixA, int **matrixB, int **matrix, int lineCount, int columnCount);
+double** addMatrix(double **matrixA, double **matrixB, double **matrix, int lineCount, int columnCount);
 
 void subtractMatrix(int **matrixA, int **matrixB, int *lineCount, int *columnCount);
 void subtractMatrix(double **matrixA, double **matrixB, int *lineCount, int *columnCount);
