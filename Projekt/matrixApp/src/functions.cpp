@@ -18,11 +18,27 @@ void help() {
             "11. ilosc wierszy, ilosc kolumn, macierz A";
 }
 
-void enterSize(int *lineCount, int *columnCount) {
-    cout << "\nPodaj liczbe wierszy: ";
-    cin >> *lineCount;
-    cout << "\nPodaj liczbe kolumn: ";
-    cin >> *columnCount;
+void chooseAction(const char *choice) {
+    const char *choices[] = {"addMatrix", "subtractMatrix", "multiplyMatrix", "multiplyByScalar", "transpozeMatrix", "powerMatrix",
+                        "determinantMatrix", "matrixIsDiagonal", "swap", "sortRow", "sortRowsInMatrix", "help"};
+    bool flag = false;
+    for(int i = 0; i < 12; i++) {
+        if(strcmp(choice, choices[i])) flag = true;
+    }
+    if(flag == false)
+        throw invalid_argument("\nBledny wybor!\n");
+}
+
+void enterSize(int *lineCountA, int *columnCountA, int *lineCountB, int *columnCountB) {
+    cout << "\nPodaj liczbe wierszy macierzy A: ";
+    cin >> *lineCountA;
+    cout << "\nPodaj liczbe kolumn macierzy A: ";
+    cin >> *columnCountA;
+
+    cout << "\nPodaj liczbe wierszy macierzy B: ";
+    cin >> *lineCountB;
+    cout << "\nPodaj liczbe kolumn macierzy B: ";
+    cin >> *columnCountB;
 }
 
 int** createMatrix(int matrixType, int lineCount, int columnCount) {
@@ -73,7 +89,18 @@ double** fillMatrix(double **matrix, int lineCount, int columnCount) {
     return matrix;
 }
 
-void chooseAction(int choice) {
-    if(choice < 1 || choice > 12)
-        throw invalid_argument("\nBledny wybor!\n");
+void displayMatrixSupport(int** MatrixA, int** MatrixB, int lineCountA, int columnCountA, int lineCountB, int columnCountB) {
+    cout << "Macierz A\n";
+    showMatrix(MatrixA, lineCountA, columnCountA);
+
+    cout << "Macierz B\n";
+    showMatrix(MatrixB, lineCountB, columnCountB);
+}
+
+void displayMatrixSupport(double** MatrixA, double** MatrixB, int lineCountA, int columnCountA, int lineCountB, int columnCountB) {
+    cout << "Macierz A\n";
+    showMatrix(MatrixA, lineCountA, columnCountA);
+
+    cout << "Macierz B\n";
+    showMatrix(MatrixB, lineCountB, columnCountB);
 }

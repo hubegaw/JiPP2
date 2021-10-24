@@ -1,16 +1,17 @@
 #include <iostream>
+#include <string>
 #include <matrixLib.h>
 #include "../include/functions.h"
 using namespace std;
 
 int main(int argc, char *argv[]) {
 
-    int **IntMatrixA, **IntMatrixB, **IntMatrix, IntScalar, power, *array, a, b, i, j, IntMatrixType;
-    double **DoubleMatrixA, **DoubleMatrixB, **DoubleMatrix, DoubleScalar;
-    int lineCount, columnCount;
-    int *lineCount_ptr = &lineCount, *columnCount_ptr = &columnCount;
+    int **intMatrixA, **intMatrixB, **intMatrix, intScalar, power, *array, a, b, intMatrixType;
+    double **doubleMatrixA, **doubleMatrixB, **doubleMatrix, DoubleScalar;
+    int lineCountA, columnCountA, lineCountB, columnCountB;
+    int *lineCountA_ptr = &lineCountA, *columnCountA_ptr = &columnCountA, *lineCountB_ptr = &lineCountB, *columnCountB_ptr = &columnCountB;
 
-    int choice = atoi(argv[1]);
+    const char *choice = argv[1];
     try {
         chooseAction(choice);
     }
@@ -19,100 +20,159 @@ int main(int argc, char *argv[]) {
         return -1;
     }
 
-    switch(choice) {
-        case 1:
-            enterSize(lineCount_ptr, columnCount_ptr);
+    if(strcmp(choice, "addMatrix") == 0) {
+        enterSize(lineCountA_ptr, columnCountA_ptr, lineCountB_ptr, columnCountB_ptr);
 
-            powtorz:
+        powtorz1:
 
-            cout << "Wpisz '1', jesli macierz ma byc typu int lub '0', jesli ma byc typu double\n";
-            cin >> IntMatrixType;
+        cout << "Wpisz '1', jesli macierz ma byc typu int lub '0', jesli ma byc typu double\n";
+        cin >> intMatrixType;
 
-            if(IntMatrixType == 1) {
+        if (intMatrixType == 1) {
 
-                IntMatrix = createMatrix(IntMatrixType, lineCount, columnCount);
-                IntMatrixA = createMatrix(IntMatrixType, lineCount, columnCount);
-                IntMatrixB = createMatrix(IntMatrixType, lineCount, columnCount);
+            intMatrix = createMatrix(intMatrixType, lineCountA, columnCountA);
+            intMatrixA = createMatrix(intMatrixType, lineCountA, columnCountA);
+            intMatrixB = createMatrix(intMatrixType, lineCountB, columnCountB);
 
-                cout << "Wprowadz macierz A\n";
-                fillMatrix(IntMatrixA, lineCount, columnCount);
+            cout << "Wprowadz macierz A\n";
+            fillMatrix(intMatrixA, lineCountA, columnCountA);
 
-                cout << "Wprowadz macierz B\n";
-                fillMatrix(IntMatrixB, lineCount, columnCount);
+            cout << "Wprowadz macierz B\n";
+            fillMatrix(intMatrixB, lineCountB, columnCountB);
 
-                cout << "Macierz A\n";
-                showMatrix(IntMatrixA, lineCount, columnCount);
+            displayMatrixSupport(intMatrixA, intMatrixB, lineCountA, columnCountA, lineCountB, columnCountB);
 
-                cout << "Macierz B\n";
-                showMatrix(IntMatrixB, lineCount, columnCount);
+            cout << "Wynik dodawania:\n";
+            intMatrix = addMatrix(intMatrixA, intMatrixB, intMatrix, lineCountA, columnCountA);
+            showMatrix(intMatrix, lineCountA, columnCountA);
 
-                cout << "Wynik dodawania:\n";
-                IntMatrix = addMatrix(IntMatrixA, IntMatrixB, IntMatrix, lineCount, columnCount);
-                showMatrix(IntMatrix, lineCount, columnCount);
-            } else if(IntMatrixType == 0) {
+        } else if (intMatrixType == 0) {
 
-                DoubleMatrix = createMatrix(lineCount, columnCount);
-                DoubleMatrixA = createMatrix(lineCount, columnCount);
-                DoubleMatrixB = createMatrix(lineCount, columnCount);
+            doubleMatrix = createMatrix(lineCountA, columnCountA);
+            doubleMatrixA = createMatrix(lineCountA, columnCountA);
+            doubleMatrixB = createMatrix(lineCountB, columnCountB);
 
-                cout << "Wprowadz macierz A\n";
-                fillMatrix(DoubleMatrixA, lineCount, columnCount);
+            cout << "Wprowadz macierz A\n";
+            fillMatrix(doubleMatrixA, lineCountA, columnCountA);
 
-                cout << "Wprowadz macierz B\n";
-                fillMatrix(DoubleMatrixB, lineCount, columnCount);
+            cout << "Wprowadz macierz B\n";
+            fillMatrix(doubleMatrixB, lineCountB, columnCountB);
 
-                cout << "Macierz A\n";
-                showMatrix(DoubleMatrixA, lineCount, columnCount);
+            displayMatrixSupport(doubleMatrixA, doubleMatrixB, lineCountA, columnCountA, lineCountB, columnCountB);
 
-                cout << "Macierz B\n";
-                showMatrix(DoubleMatrixB, lineCount, columnCount);
+            cout << "Wynik dodawania:\n";
+            doubleMatrix = addMatrix(doubleMatrixA, doubleMatrixB, doubleMatrix, lineCountA, columnCountB);
+            showMatrix(doubleMatrix, lineCountA, columnCountB);
+        } else {
+            cout << "\nBledny wybor!\n";
+            goto powtorz1;
+        }
+    }
+    else if(strcmp(choice, "subtractMatrix") == 0) {
 
-                cout << "Wynik dodawania:\n";
-                DoubleMatrix = addMatrix(DoubleMatrixA, DoubleMatrixB, DoubleMatrix, lineCount, columnCount);
-                showMatrix(DoubleMatrix, lineCount, columnCount);
-            } else {
-                cout << "\nBledny wybor!\n";
-                goto powtorz;
-            }
+        enterSize(lineCountA_ptr, columnCountA_ptr, lineCountB_ptr, columnCountB_ptr);
 
-            break;
-        case 2:
+        powtorz2:
 
-            break;
-        case 3:
+        cout << "Wpisz '1', jesli macierz ma byc typu int lub '0', jesli ma byc typu double\n";
+        cin >> intMatrixType;
 
-            break;
-        case 4:
+        if (intMatrixType == 1) {
 
-            break;
-        case 5:
+            intMatrix = createMatrix(intMatrixType, lineCountA, columnCountB);
+            intMatrixA = createMatrix(intMatrixType, lineCountA, columnCountA);
+            intMatrixB = createMatrix(intMatrixType, lineCountB, columnCountB);
 
-            break;
-        case 6:
+            cout << "Wprowadz macierz A\n";
+            fillMatrix(intMatrixA, lineCountA, columnCountA);
 
-            break;
-        case 7:
+            cout << "Wprowadz macierz B\n";
+            fillMatrix(intMatrixB, lineCountB, columnCountB);
 
-            break;
-        case 8:
+            displayMatrixSupport(intMatrixA, intMatrixB, lineCountA, columnCountA, lineCountB, columnCountB);
 
-            break;
-        case 9:
+            cout << "Wynik odejmowania:\n";
+            intMatrix = subtractMatrix(intMatrixA, intMatrixB, intMatrix, lineCountA, columnCountA);
+            showMatrix(intMatrix, lineCountA, columnCountA);
 
-            break;
-        case 10:
+        } else if (intMatrixType == 0) {
 
-            break;
-        case 11:
+            doubleMatrix = createMatrix(lineCountA, columnCountA);
+            doubleMatrixA = createMatrix(lineCountA, columnCountA);
+            doubleMatrixB = createMatrix(lineCountB, columnCountB);
 
-            break;
-        case 12:
-            help();
-            break;
-        default:
-            startInstructions();
-            help();
-            break;
+            cout << "Wprowadz macierz A\n";
+            fillMatrix(doubleMatrixA, lineCountA, columnCountA);
+
+            cout << "Wprowadz macierz B\n";
+            fillMatrix(doubleMatrixB, lineCountA, columnCountA);
+
+            displayMatrixSupport(doubleMatrixA, doubleMatrixB, lineCountA, columnCountA, lineCountB, columnCountB);
+
+            cout << "Wynik odejmowania:\n";
+            doubleMatrix = subtractMatrix(doubleMatrixA, doubleMatrixB, doubleMatrix, lineCountA, columnCountA);
+            showMatrix(doubleMatrix, lineCountA, columnCountA);
+        } else {
+            cout << "\nBledny wybor!\n";
+            goto powtorz2;
+        }
+    }
+    else if(strcmp(choice, "muliplyMatrix") == 0) {
+
+        enterSize(lineCountA_ptr, columnCountA_ptr, lineCountB_ptr, columnCountB_ptr);
+
+        powtorz3:
+
+        cout << "Wpisz '1', jesli macierz ma byc typu int lub '0', jesli ma byc typu double\n";
+        cin >> intMatrixType;
+
+        if (intMatrixType == 1) {
+
+            intMatrix = createMatrix(intMatrixType, lineCountA, columnCountB);
+            intMatrixA = createMatrix(intMatrixType, lineCountA, columnCountA);
+            intMatrixB = createMatrix(intMatrixType, lineCountB, columnCountB);
+
+            cout << "Wprowadz macierz A\n";
+            fillMatrix(intMatrixA, lineCountA, columnCountA);
+
+            cout << "Wprowadz macierz B\n";
+            fillMatrix(intMatrixB, lineCountB, columnCountB);
+
+            displayMatrixSupport(intMatrixA, intMatrixB, lineCountA, columnCountA, lineCountB, columnCountB);
+
+            cout << "Wynik mnozenia:\n";
+            intMatrix = multiplyMatrix(intMatrixA, intMatrixB, intMatrix, lineCountA, columnCountA, lineCountB);
+            showMatrix(intMatrix, lineCountA, columnCountB);
+        } else if (intMatrixType == 0) {
+
+            doubleMatrix = createMatrix(lineCountB, columnCountA);
+            doubleMatrixA = createMatrix(lineCountA, columnCountA);
+            doubleMatrixB = createMatrix(lineCountB, columnCountB);
+
+            cout << "Wprowadz macierz A\n";
+            fillMatrix(doubleMatrixA, lineCountA, columnCountA);
+
+            cout << "Wprowadz macierz B\n";
+            fillMatrix(doubleMatrixB, lineCountB, columnCountB);
+
+            displayMatrixSupport(doubleMatrixA, doubleMatrixB, lineCountA, columnCountA, lineCountB, columnCountB);
+
+            cout << "Wynik mnozenia:\n";
+            doubleMatrix = multiplyMatrix(doubleMatrixA, doubleMatrixB, doubleMatrix, lineCountA, columnCountA,
+                                          columnCountB);
+            showMatrix(doubleMatrix, lineCountB, columnCountA);
+        } else {
+            cout << "\nBledny wybor!\n";
+            goto powtorz3;
+        }
+
+    }
+    else if(strcmp(choice, "help") == 0) {
+        help();
+    }
+    else {
+        startInstructions();
+        help();
     }
 
 return 0;
