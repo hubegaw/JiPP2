@@ -1,7 +1,5 @@
 #ifndef PROJEKT_MATRIXLIB_H
 #define PROJEKT_MATRIXLIB_H
-
-#include <iostream>
 using namespace std;
 
 int** addMatrix(int **matrixA, int **matrixB, int **matrix, int lineCount, int columnCount);
@@ -13,8 +11,8 @@ double** subtractMatrix(double **matrixA, double **matrixB, double **matrix, int
 int** multiplyMatrix(int **matrixA, int **matrixB, int **matrix, int lineCountA, int columnCountA, int columnCountB);
 double** multiplyMatrix(double **matrixA, double **matrixB, double **matrix, int lineCountA, int columnCountA, int columnCountB);
 
-void multiplyByScalar(int **matrixA, int *lineCount, int *columnCount, int scalar);
-void multiplyByScalar(double **matrixA, int *lineCount, int *columnCount, int scalar);
+int** multiplyByScalar(int **matrixA, int **matrix, int lineCount, int columnCount, int scalar);
+double** multiplyByScalar(double **matrixA, double **matrix, int lineCount, int columnCount, double scalar);
 
 void transpozeMatrix(int **matrixA, int lineCount, int columnCount);
 void transpozeMatrix(double **matrixA, int lineCount, int columnCount);

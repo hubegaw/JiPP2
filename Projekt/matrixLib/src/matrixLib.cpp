@@ -60,27 +60,35 @@ double** multiplyMatrix(double **matrixA, double **matrixB, double **matrix, int
     }
     return matrix;
 }
-/*
+
 //----------------------------------mnożenie przez skalar-----------------------------------
-void multiplyByScalar(int **matrixA, int lineCount, int columnCount, int scalar) {
-    int matrix[*lineCount][*columnCount];
-
+int** multiplyByScalar(int **matrixA, int **matrix, int lineCount, int columnCount, int scalar) {
+    for(int i = 0; i < lineCount; i++) {
+        for(int j = 0; j < columnCount; j++) {
+                matrix[i][j] = matrixA[i][j] * scalar;
+        }
+    }
+    return matrix;
 }
 
-void multiplyByScalar(double **matrixA, int lineCount, int columnCount, int scalar) {
-    double matrix[*lineCount][*columnCount];
-
+double** multiplyByScalar(double **matrixA, double **matrix, int lineCount, int columnCount, double scalar) {
+    for(int i = 0; i < lineCount; i++) {
+        for(int j = 0; j < columnCount; j++) {
+            matrix[i][j] = matrixA[i][j] * scalar;
+        }
+    }
+    return matrix;
 }
-
+/*
 //---------------------------------transponowanie macierzy----------------------------------
 
-void transpozeMatrix(int **matrixA, int lineCount, int columnCount) {
-    int matrix[*lineCount][*columnCount];
+int** transpozeMatrix(int **matrixA, int lineCount, int columnCount) {
+
 
 }
 
-void transpozeMatrix(double **matrixA, int lineCount, int columnCount) {
-    double matrix[*lineCount][*columnCount];
+double** transpozeMatrix(double **matrixA, int lineCount, int columnCount) {
+
 
 }
 
