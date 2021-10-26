@@ -17,8 +17,8 @@ double** multiplyByScalar(double **matrixA, double **matrix, int lineCount, int 
 int** transpozeMatrix(int **matrixA, int **matrix, int lineCount, int columnCount);
 double** transpozeMatrix(double **matrixA, double **matrix, int lineCount, int columnCount);
 
-int** powerMatrix(int **matrixA, int lineCount, int columnCount, unsigned power);
-double** powerMatrix(double **matrixA, int lineCount, int columnCount, unsigned power);
+int** powerMatrix(int **matrixA, int **matrix, int rowCount, int columnCount, unsigned power);
+double** powerMatrix(double **matrixA, double **matrix, int rowCount, int columnCount, unsigned power);
 
 int powerMatrix(int **matrixA, int lineCount, int columnCount);
 double powerMatrix(double **matrixA, int lineCount, int columnCount);

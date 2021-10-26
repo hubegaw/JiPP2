@@ -62,9 +62,33 @@ void Matrix::showMatrix(const char *matrixType) {
     }
 }
 
-void Matrix::scalarInput(const char *matrixType) {
+void Matrix::setScalar(const char *matrixType) {
     if (strcmp(matrixType, "int") == 0)
         cin >> intScalar;
     else if (strcmp(matrixType, "double") == 0)
         cin >> doubleScalar;
+}
+void Matrix::setPower() {
+    cout << "Podaj potege:";
+    cin >> power;
+}
+
+void Matrix::matrixServiceSupport(Matrix matrixA, Matrix matrixB, const char *matrixType) {
+    cout << "Wprowadz macierz A\n";
+    matrixA.fillMatrix(matrixType);
+    cout << "Wprowadz macierz B\n";
+    matrixB.fillMatrix(matrixType);
+
+    cout << "\nmacierz A:" << endl;
+    matrixA.showMatrix(matrixType);
+    cout << "\nmacierz B:" << endl;
+    matrixB.showMatrix(matrixType);
+}
+
+void Matrix::matrixServiceSupport(Matrix matrixA, const char *matrixType) {
+    cout << "Wprowadz macierz A\n";
+    matrixA.fillMatrix(matrixType);
+
+    cout << "\nmacierz A:" << endl;
+    matrixA.showMatrix(matrixType);
 }

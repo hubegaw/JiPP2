@@ -89,7 +89,7 @@ int** transpozeMatrix(int **matrixA, int **matrix, int rowCount, int columnCount
         for(j = 0; j < columnCount; j++)
             matrix[j][i] = matrixA[i][j];
     }
-return matrix;
+    return matrix;
 }
 
 double** transpozeMatrix(double **matrixA, double **matrix, int rowCount, int columnCount) {
@@ -99,19 +99,23 @@ double** transpozeMatrix(double **matrixA, double **matrix, int rowCount, int co
     }
     return matrix;
 }
-/*
+
 //----------------------------------potęgowanie macierzy------------------------------------
 
-void powerMatrix(int **matrixA, int lineCount, int columnCount, unsigned power) {
-    int matrix[*lineCount][*columnCount];
+int** powerMatrix(int **matrixA, int **matrix, int rowCount, int columnCount, unsigned power) {
+    for(i = 0; i < rowCount; i++) {
+        for(j = 0; j < columnCount; j++) {
 
+        }
+    }
+    return matrix;
 }
 
-void powerMatrix(double **matrixA, int lineCount, int columnCount, unsigned power) {
-    double matrix[*lineCount][*columnCount];
+double** powerMatrix(double **matrixA, double **matrix, int rowCount, int columnCount, unsigned power) {
 
+    return matrix;
 }
-
+/*
 //----------------------------------wyznacznik macierzy-------------------------------------
 
 int powerMatrix(int **matrixA, int lineCount, int columnCount) {

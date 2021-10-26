@@ -12,7 +12,7 @@ void help() {
     cout << "Macierze moga byc typu int lub double, wiersze i kolumn jedynie typu int\n" << endl;
     cout << "Wprowadz odpowiednio dla:" << endl;
     cout << "1. ilosc wierszy, ilosc kolumn, macierz A oraz macierz B\n2. ilosc wierszy, ilosc kolumn, macierz A oraz macierz B\n"
-            "3. ilosc wierszy pierwszej macierzy, ilosc kolumn pierwszej macierzy, ilosc kolumn drugiej macierzy"
+            "3. ilosc wierszy pierwszej macierzy, ilosc kolumn pierwszej macierzy, ilosc kolumn drugiej macierzy\n"
             "4. ilosc  wierszy, ilosc kolumn, skalar oraz macierz A\n5. ilosc  wierszy, ilosc kolumn, macierz A\n"
             "6. ilosc  wierszy, ilosc kolumn, stopien potegi, macierz A\n7. ilosc  wierszy, ilosc kolumn, macierz A\n"
             "8. ilosc  wierszy, ilosc kolumn, macierz A\n9. liczba a, liczba b\n10. ilosc kolumn, tablica\n"
@@ -23,7 +23,7 @@ void chooseAction(const char *choice, int argc, const char *matrixType) {
     static const char *choices[] = {"addMatrix", "subtractMatrix", "multiplyMatrix", "multiplyByScalar", "transpozeMatrix", "powerMatrix",
                         "determinantMatrix", "matrixIsDiagonal", "swap", "sortRow", "sortRowsInMatrix", "help", "int", "double"};
     static bool flag = false;
-    if(argc != 3)
+    if(argc != 3 && strcmp(choice, choices[11]) != 0)
         throw invalid_argument("\nNiepoprawna liczba argumentow!\n");
     for(int i = 0; i < 12; i++) {
         if(strcmp(choice, choices[i])==0) flag = true;
