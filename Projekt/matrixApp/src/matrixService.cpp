@@ -18,7 +18,9 @@ Matrix::Matrix(const char *matrixType) {
     }
 }
 
-Matrix::Matrix(const char* matrixType, int rowCount, int columnCount) {
+Matrix::Matrix(const char* matrixType, int setRowCount, int setColumnCount) {
+    rowCount = setRowCount;
+    columnCount = setColumnCount;
     if(strcmp(matrixType, "int") == 0) {
         intMatrix = new int*[rowCount];
         for (int i = 0; i < rowCount; i++)

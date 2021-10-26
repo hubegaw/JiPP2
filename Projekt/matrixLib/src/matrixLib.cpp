@@ -1,18 +1,20 @@
 #include "../include/matrixLib.h"
 
+static int i, j;
+
 //---------------------------------dodawanie dwóch macierzy---------------------------------
-int** addMatrix(int **matrixA, int **matrixB, int **matrix, int lineCount, int columnCount) {
-    for(int i = 0; i < lineCount; i++) {
-        for(int j = 0; j < columnCount; j++) {
+int** addMatrix(int **matrixA, int **matrixB, int **matrix, int rowCount, int columnCount) {
+    for(i = 0; i < rowCount; i++) {
+        for(j = 0; j < columnCount; j++) {
             matrix[i][j] = matrixA[i][j] + matrixB[i][j];
         }
     }
     return matrix;
 }
 
-double** addMatrix(double **matrixA, double **matrixB, double **matrix, int lineCount, int columnCount) {
-    for(int i = 0; i < lineCount; i++) {
-        for(int j = 0; j < columnCount; j++) {
+double** addMatrix(double **matrixA, double **matrixB, double **matrix, int rowCount, int columnCount) {
+    for(i = 0; i < rowCount; i++) {
+        for(j = 0; j < columnCount; j++) {
             matrix[i][j] = matrixA[i][j] + matrixB[i][j];
         }
     }
@@ -20,18 +22,18 @@ double** addMatrix(double **matrixA, double **matrixB, double **matrix, int line
 }
 
 //--------------------------------odejmowanie dwóch macierzy--------------------------------
-int** subtractMatrix(int **matrixA, int **matrixB, int **matrix, int lineCount, int columnCount) {
-    for(int i = 0; i < lineCount; i++) {
-        for(int j = 0; j < columnCount; j++) {
+int** subtractMatrix(int **matrixA, int **matrixB, int **matrix, int rowCount, int columnCount) {
+    for(i = 0; i < rowCount; i++) {
+        for(j = 0; j < columnCount; j++) {
             matrix[i][j] = matrixA[i][j] - matrixB[i][j];
         }
     }
     return matrix;
 }
 
-double** subtractMatrix(double **matrixA, double **matrixB, double **matrix, int lineCount, int columnCount) {
-     for(int i = 0; i < lineCount; i++) {
-        for(int j = 0; j < columnCount; j++) {
+double** subtractMatrix(double **matrixA, double **matrixB, double **matrix, int rowCount, int columnCount) {
+    for(i = 0; i < rowCount; i++) {
+        for(j = 0; j < columnCount; j++) {
             matrix[i][j] = matrixA[i][j] - matrixB[i][j];
         }
     }
@@ -39,9 +41,9 @@ double** subtractMatrix(double **matrixA, double **matrixB, double **matrix, int
 }
 
 //---------------------------------mnożenie dwóch macierzy----------------------------------
-int** multiplyMatrix(int **matrixA, int **matrixB, int **matrix, int lineCountA, int columnCountA, int columnCountB) {
-    for(int i = 0; i < lineCountA; i++) {
-        for(int j = 0; j < columnCountA; j++) {
+int** multiplyMatrix(int **matrixA, int **matrixB, int **matrix, int rowCountA, int columnCountA, int columnCountB) {
+    for(i = 0; i < rowCountA; i++) {
+        for(j = 0; j < columnCountA; j++) {
             matrix[i][j] = 0;
             for(int k = 0; k < columnCountB; k++)
                 matrix[i][j] += matrixA[i][k] * matrixB[k][j];
@@ -50,9 +52,9 @@ int** multiplyMatrix(int **matrixA, int **matrixB, int **matrix, int lineCountA,
     return matrix;
 }
 
-double** multiplyMatrix(double **matrixA, double **matrixB, double **matrix, int lineCountA, int columnCountA, int columnCountB) {
-    for(int i = 0; i < lineCountA; i++) {
-        for(int j = 0; j < columnCountA; j++) {
+double** multiplyMatrix(double **matrixA, double **matrixB, double **matrix, int rowCountA, int columnCountA, int columnCountB) {
+    for(i = 0; i < rowCountA; i++) {
+        for(j = 0; j < columnCountA; j++) {
             matrix[i][j] = 0;
             for(int k = 0; k < columnCountB; k++)
                 matrix[i][j] += matrixA[i][k] * matrixB[k][j];
@@ -62,36 +64,42 @@ double** multiplyMatrix(double **matrixA, double **matrixB, double **matrix, int
 }
 
 //----------------------------------mnożenie przez skalar-----------------------------------
-int** multiplyByScalar(int **matrixA, int **matrix, int lineCount, int columnCount, int scalar) {
-    for(int i = 0; i < lineCount; i++) {
-        for(int j = 0; j < columnCount; j++) {
+int** multiplyByScalar(int **matrixA, int **matrix, int rowCount, int columnCount, int scalar) {
+    for(i = 0; i < rowCount; i++) {
+        for(j = 0; j < columnCount; j++) {
                 matrix[i][j] = matrixA[i][j] * scalar;
         }
     }
     return matrix;
 }
 
-double** multiplyByScalar(double **matrixA, double **matrix, int lineCount, int columnCount, double scalar) {
-    for(int i = 0; i < lineCount; i++) {
-        for(int j = 0; j < columnCount; j++) {
+double** multiplyByScalar(double **matrixA, double **matrix, int rowCount, int columnCount, double scalar) {
+    for(i = 0; i < rowCount; i++) {
+        for(j = 0; j < columnCount; j++) {
             matrix[i][j] = matrixA[i][j] * scalar;
         }
     }
     return matrix;
 }
-/*
+
 //---------------------------------transponowanie macierzy----------------------------------
 
-int** transpozeMatrix(int **matrixA, int lineCount, int columnCount) {
-
-
+int** transpozeMatrix(int **matrixA, int **matrix, int rowCount, int columnCount) {
+    for(i = 0; i < rowCount; i++) {
+        for(j = 0; j < columnCount; j++)
+            matrix[j][i] = matrixA[i][j];
+    }
+return matrix;
 }
 
-double** transpozeMatrix(double **matrixA, int lineCount, int columnCount) {
-
-
+double** transpozeMatrix(double **matrixA, double **matrix, int rowCount, int columnCount) {
+    for(i = 0; i < rowCount; i++) {
+        for(j = 0; j < columnCount; j++)
+            matrix[j][i] = matrixA[i][j];
+    }
+    return matrix;
 }
-
+/*
 //----------------------------------potęgowanie macierzy------------------------------------
 
 void powerMatrix(int **matrixA, int lineCount, int columnCount, unsigned power) {

@@ -14,11 +14,11 @@ double** multiplyMatrix(double **matrixA, double **matrixB, double **matrix, int
 int** multiplyByScalar(int **matrixA, int **matrix, int lineCount, int columnCount, int scalar);
 double** multiplyByScalar(double **matrixA, double **matrix, int lineCount, int columnCount, double scalar);
 
-void transpozeMatrix(int **matrixA, int lineCount, int columnCount);
-void transpozeMatrix(double **matrixA, int lineCount, int columnCount);
+int** transpozeMatrix(int **matrixA, int **matrix, int lineCount, int columnCount);
+double** transpozeMatrix(double **matrixA, double **matrix, int lineCount, int columnCount);
 
-void powerMatrix(int **matrixA, int lineCount, int columnCount, unsigned power);
-void powerMatrix(double **matrixA, int lineCount, int columnCount, unsigned power);
+int** powerMatrix(int **matrixA, int lineCount, int columnCount, unsigned power);
+double** powerMatrix(double **matrixA, int lineCount, int columnCount, unsigned power);
 
 int powerMatrix(int **matrixA, int lineCount, int columnCount);
 double powerMatrix(double **matrixA, int lineCount, int columnCount);

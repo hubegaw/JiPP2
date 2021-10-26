@@ -101,7 +101,7 @@ int main(int argc, char *argv[]) {
             cout << "Wprowadz macierz B\n";
             matrixB.fillMatrix(matrixType);
 
-            cout << "Wynik mnożenia:\n";
+            cout << "Wynik mnozenia:\n";
             matrix.intMatrix = multiplyMatrix(matrixA.intMatrix, matrixB.intMatrix, matrix.intMatrix, matrixA.rowCount,
                                               matrixA.columnCount, matrixB.columnCount);
             matrix.showMatrix(matrixType);
@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
             cout << "Wprowadz macierz B\n";
             matrixB.fillMatrix(matrixType);
 
-            cout << "Wynik mnożenia:\n";
+            cout << "Wynik mnozenia:\n";
             matrix.doubleMatrix = multiplyMatrix(matrixA.doubleMatrix, matrixB.doubleMatrix, matrix.doubleMatrix, matrixA.rowCount,
                                                  matrixA.columnCount, matrixB.columnCount);
             matrix.showMatrix(matrixType);
@@ -129,10 +129,60 @@ int main(int argc, char *argv[]) {
         cout << "skalar:";
         matrixA.scalarInput(matrixType);
 
+        Matrix matrix(matrixType, matrixA.rowCount, matrixA.columnCount);
+
         if (strcmp(matrixType, "int") == 0) {
+
+            cout << "Wprowadz macierz A\n";
+            matrixA.fillMatrix(matrixType);
+
+            cout << "Wynik mnozenia przez skalar:\n";
+            matrix.intMatrix = multiplyByScalar(matrixA.intMatrix, matrix.intMatrix, matrixA.rowCount,
+                                              matrixA.columnCount, matrixA.intScalar);
+            matrix.showMatrix(matrixType);
 
         }
         else if (strcmp(matrixType, "double") == 0) {
+
+            cout << "Wprowadz macierz A\n";
+            matrixA.fillMatrix(matrixType);
+
+            cout << "Wynik mnozenia przez skalar:\n";
+            matrix.doubleMatrix = multiplyByScalar(matrixA.doubleMatrix, matrix.doubleMatrix, matrixA.rowCount,
+                                                 matrixA.columnCount, matrixA.doubleScalar);
+            matrix.showMatrix(matrixType);
+
+        }
+    }
+    else if(strcmp(choice, "transpozeMatrix") == 0) {
+
+        cout << "\nMacierz A:\n";
+        Matrix matrixA(matrixType);
+
+        Matrix matrix(matrixType, matrixA.rowCount, matrixA.columnCount);
+
+        if(strcmp(matrixType, "int") == 0) {
+
+            cout << "Wprowadz macierz A\n";
+            matrixA.fillMatrix(matrixType);
+            cout << "macierz przed transponowaniem:" << endl;
+            matrixA.showMatrix(matrixType);
+
+            cout << "Wynik transponowania macierzy:\n";
+            matrix.intMatrix = transpozeMatrix(matrixA.intMatrix, matrix.intMatrix, matrix.rowCount, matrix.columnCount);
+            matrix.showMatrix(matrixType);
+
+        }
+        else if(strcmp(matrixType, "double") == 0) {
+
+            cout << "Wprowadz macierz A\n";
+            matrixA.fillMatrix(matrixType);
+            cout << "macierz przed transponowaniem:" << endl;
+            matrixA.showMatrix(matrixType);
+
+            cout << "Wynik transponowania macierzy:\n";
+            matrix.doubleMatrix = transpozeMatrix(matrixA.doubleMatrix, matrix.doubleMatrix, matrix.rowCount, matrix.columnCount);
+            matrix.showMatrix(matrixType);
 
         }
     }
