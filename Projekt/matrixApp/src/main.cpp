@@ -1,15 +1,5 @@
-#include <iostream>
-#include <string>
 #include "../include/appService.h"
 using namespace std;
-
-static int **intMatrixA, **intMatrixB, **intMatrix, intScalar, power, *array, a, b;
-static double **doubleMatrixA, **doubleMatrixB, **doubleMatrix, doubleScalar;
-static int lineCountA, columnCountA, lineCountB, columnCountB;
-static int *lineCountA_ptr = &lineCountA, *columnCountA_ptr = &columnCountA;
-static int *lineCountB_ptr = &lineCountB, *columnCountB_ptr = &columnCountB;
-static int *intScalar_ptr = &intScalar;
-static double *doubleScalar_ptr = &doubleScalar;
 
 int main(int argc, char *argv[]) {
 
@@ -25,164 +15,125 @@ int main(int argc, char *argv[]) {
     }
 
     if(strcmp(choice, "addMatrix") == 0) {
-        enterSize(lineCountA_ptr, columnCountA_ptr, lineCountB_ptr, columnCountB_ptr);
+
+        cout << "\nMacierz A:\n";
+        Matrix matrixA(matrixType);
+        cout << "\nMacierz B:\n";
+        Matrix matrixB(matrixType);
+
+        Matrix matrix(matrixType, matrixA.rowCount, matrixA.columnCount);
 
         if (strcmp(matrixType, "int") == 0) {
 
-            intMatrix = createMatrix(matrixType, lineCountA, columnCountA);
-
-            intMatrixA = createMatrix(matrixType, lineCountA, columnCountA);
-            intMatrixB = createMatrix(matrixType, lineCountB, columnCountB);
-
             cout << "Wprowadz macierz A\n";
-            fillMatrix(intMatrixA, lineCountA, columnCountA);
+            matrixA.fillMatrix(matrixType);
 
             cout << "Wprowadz macierz B\n";
-            fillMatrix(intMatrixB, lineCountB, columnCountB);
-
-            displayMatrixSupport(intMatrixA, intMatrixB, lineCountA, columnCountA, lineCountB, columnCountB);
+            matrixB.fillMatrix(matrixType);
 
             cout << "Wynik dodawania:\n";
-            intMatrix = addMatrix(intMatrixA, intMatrixB, intMatrix, lineCountA, columnCountA);
-            showMatrix(intMatrix, lineCountA, columnCountA);
+            matrix.intMatrix = addMatrix(matrixA.intMatrix, matrixB.intMatrix, matrix.intMatrix, matrix.rowCount, matrix.columnCount);
+            matrix.showMatrix(matrixType);
 
         }
         else if (strcmp(matrixType, "double") == 0) {
 
-            doubleMatrix = createMatrix(lineCountA, columnCountA);
-            doubleMatrixA = createMatrix(lineCountA, columnCountA);
-            doubleMatrixB = createMatrix(lineCountB, columnCountB);
-
             cout << "Wprowadz macierz A\n";
-            fillMatrix(doubleMatrixA, lineCountA, columnCountA);
+            matrixA.fillMatrix(matrixType);
 
             cout << "Wprowadz macierz B\n";
-            fillMatrix(doubleMatrixB, lineCountB, columnCountB);
-
-            displayMatrixSupport(doubleMatrixA, doubleMatrixB, lineCountA, columnCountA, lineCountB, columnCountB);
+            matrixB.fillMatrix(matrixType);
 
             cout << "Wynik dodawania:\n";
-            doubleMatrix = addMatrix(doubleMatrixA, doubleMatrixB, doubleMatrix, lineCountA, columnCountB);
-            showMatrix(doubleMatrix, lineCountA, columnCountB);
+            matrix.doubleMatrix = addMatrix(matrixA.doubleMatrix, matrixB.doubleMatrix, matrix.doubleMatrix, matrix.rowCount, matrix.columnCount);
+            matrix.showMatrix(matrixType);
 
         }
     }
     else if(strcmp(choice, "subtractMatrix") == 0) {
 
-        enterSize(lineCountA_ptr, columnCountA_ptr, lineCountB_ptr, columnCountB_ptr);
+        cout << "\nMacierz A:\n";
+        Matrix matrixA(matrixType);
+        cout << "\nMacierz B:\n";
+        Matrix matrixB(matrixType);
 
+        Matrix matrix(matrixType, matrixA.rowCount, matrixA.columnCount);
         if (strcmp(matrixType, "int") == 0) {
 
-            intMatrix = createMatrix(matrixType, lineCountA, columnCountB);
-            intMatrixA = createMatrix(matrixType, lineCountA, columnCountA);
-            intMatrixB = createMatrix(matrixType, lineCountB, columnCountB);
-
             cout << "Wprowadz macierz A\n";
-            fillMatrix(intMatrixA, lineCountA, columnCountA);
+            matrixA.fillMatrix(matrixType);
 
             cout << "Wprowadz macierz B\n";
-            fillMatrix(intMatrixB, lineCountB, columnCountB);
-
-            displayMatrixSupport(intMatrixA, intMatrixB, lineCountA, columnCountA, lineCountB, columnCountB);
+            matrixB.fillMatrix(matrixType);
 
             cout << "Wynik odejmowania:\n";
-            intMatrix = subtractMatrix(intMatrixA, intMatrixB, intMatrix, lineCountA, columnCountA);
-            showMatrix(intMatrix, lineCountA, columnCountA);
+            matrix.intMatrix = subtractMatrix(matrixA.intMatrix, matrixB.intMatrix, matrix.intMatrix, matrix.rowCount, matrix.columnCount);
+            matrix.showMatrix(matrixType);
 
         }
         else if (strcmp(matrixType, "double") == 0) {
 
-            doubleMatrix = createMatrix(lineCountA, columnCountA);
-            doubleMatrixA = createMatrix(lineCountA, columnCountA);
-            doubleMatrixB = createMatrix(lineCountB, columnCountB);
-
             cout << "Wprowadz macierz A\n";
-            fillMatrix(doubleMatrixA, lineCountA, columnCountA);
+            matrixA.fillMatrix(matrixType);
 
             cout << "Wprowadz macierz B\n";
-            fillMatrix(doubleMatrixB, lineCountB, columnCountB);
-
-            displayMatrixSupport(doubleMatrixA, doubleMatrixB, lineCountA, columnCountA, lineCountB, columnCountB);
+            matrixB.fillMatrix(matrixType);
 
             cout << "Wynik odejmowania:\n";
-            doubleMatrix = subtractMatrix(doubleMatrixA, doubleMatrixB, doubleMatrix, lineCountA, columnCountA);
-            showMatrix(doubleMatrix, lineCountA, columnCountA);
+            matrix.doubleMatrix = subtractMatrix(matrixA.doubleMatrix, matrixB.doubleMatrix, matrix.doubleMatrix, matrix.rowCount, matrix.columnCount);
+            matrix.showMatrix(matrixType);
+
         }
     }
     else if(strcmp(choice, "multiplyMatrix") == 0) {
 
-        enterSize(lineCountA_ptr, columnCountA_ptr, lineCountB_ptr, columnCountB_ptr);
+        cout << "\nMacierz A:\n";
+        Matrix matrixA(matrixType);
+        cout << "\nMacierz B:\n";
+        Matrix matrixB(matrixType);
 
+        Matrix matrix(matrixType, matrixB.rowCount, matrixA.columnCount);
         if (strcmp(matrixType, "int") == 0) {
 
-            intMatrix = createMatrix(matrixType, lineCountA, columnCountB);
-            intMatrixA = createMatrix(matrixType, lineCountA, columnCountA);
-            intMatrixB = createMatrix(matrixType, lineCountB, columnCountB);
-
             cout << "Wprowadz macierz A\n";
-            fillMatrix(intMatrixA, lineCountA, columnCountA);
+            matrixA.fillMatrix(matrixType);
 
             cout << "Wprowadz macierz B\n";
-            fillMatrix(intMatrixB, lineCountB, columnCountB);
+            matrixB.fillMatrix(matrixType);
 
-            displayMatrixSupport(intMatrixA, intMatrixB, lineCountA, columnCountA, lineCountB, columnCountB);
+            cout << "Wynik mnożenia:\n";
+            matrix.intMatrix = multiplyMatrix(matrixA.intMatrix, matrixB.intMatrix, matrix.intMatrix, matrixA.rowCount,
+                                              matrixA.columnCount, matrixB.columnCount);
+            matrix.showMatrix(matrixType);
 
-            cout << "Wynik mnozenia:\n";
-            intMatrix = multiplyMatrix(intMatrixA, intMatrixB, intMatrix, lineCountA, columnCountA, lineCountB);
-            showMatrix(intMatrix, lineCountA, columnCountB);
         }
         else if (strcmp(matrixType, "double") == 0) {
 
-            doubleMatrix = createMatrix(lineCountB, columnCountA);
-            doubleMatrixA = createMatrix(lineCountA, columnCountA);
-            doubleMatrixB = createMatrix(lineCountB, columnCountB);
-
             cout << "Wprowadz macierz A\n";
-            fillMatrix(doubleMatrixA, lineCountA, columnCountA);
+            matrixA.fillMatrix(matrixType);
 
             cout << "Wprowadz macierz B\n";
-            fillMatrix(doubleMatrixB, lineCountB, columnCountB);
+            matrixB.fillMatrix(matrixType);
 
-            displayMatrixSupport(doubleMatrixA, doubleMatrixB, lineCountA, columnCountA, lineCountB, columnCountB);
+            cout << "Wynik mnożenia:\n";
+            matrix.doubleMatrix = multiplyMatrix(matrixA.doubleMatrix, matrixB.doubleMatrix, matrix.doubleMatrix, matrixA.rowCount,
+                                                 matrixA.columnCount, matrixB.columnCount);
+            matrix.showMatrix(matrixType);
 
-            cout << "Wynik mnozenia:\n";
-            doubleMatrix = multiplyMatrix(doubleMatrixA, doubleMatrixB, doubleMatrix, lineCountA, columnCountA, columnCountB);
-            showMatrix(doubleMatrix, lineCountB, columnCountA);
         }
     }
     else if(strcmp(choice, "multiplyByScalar") == 0) {
 
+        cout << "\nMacierz A:\n";
+        Matrix matrixA(matrixType);
+        cout << "skalar:";
+        matrixA.scalarInput(matrixType);
+
         if (strcmp(matrixType, "int") == 0) {
 
-            enterSize(lineCountA_ptr, columnCountA_ptr, intScalar_ptr);
-
-            intMatrix = createMatrix(matrixType, lineCountA, columnCountA);
-            intMatrixA = createMatrix(matrixType, lineCountA, columnCountA);
-
-            cout << "Wprowadz macierz \n";
-            fillMatrix(intMatrixA, lineCountA, columnCountA);
-
-            showMatrix(intMatrixA, lineCountA, columnCountA);
-
-            cout << "Wynik mnozenia:\n";
-            intMatrix = multiplyByScalar(intMatrixA, intMatrix, lineCountA, columnCountA, intScalar);
-            showMatrix(intMatrix, lineCountA, columnCountA);
         }
         else if (strcmp(matrixType, "double") == 0) {
 
-            enterSize(lineCountA_ptr, columnCountA_ptr, doubleScalar_ptr);
-
-            doubleMatrix = createMatrix(lineCountA, columnCountA);
-            doubleMatrixA = createMatrix(lineCountA, columnCountA);
-
-            cout << "Wprowadz macierz\n";
-            fillMatrix(doubleMatrixA, lineCountA, columnCountA);
-
-            showMatrix(doubleMatrixA, lineCountA, columnCountA);
-
-            cout << "Wynik mnozenia:\n";
-            doubleMatrix = multiplyByScalar(doubleMatrixA, doubleMatrix, lineCountA, columnCountA, doubleScalar);
-            showMatrix(doubleMatrix, lineCountA, columnCountA);
         }
     }
     else if(strcmp(choice, "help") == 0) {
