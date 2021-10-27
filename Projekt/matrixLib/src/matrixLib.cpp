@@ -302,9 +302,15 @@ double* sortRow(double *array, int columnCount) {
 //-------------------------------sortowanie wierszy macierzy--------------------------------
 
 int** sortRowsInMatrix(int **matrixA, int rowCount, int columnCount) {
+    for(i = 0; i < rowCount; i++)
+        sortRow(matrixA[i], columnCount);
 
+    return matrixA;
 }
 
 double** sortRowsInMatrix(double **matrixA, int rowCount, int columnCount) {
+    for(i = 0; i < rowCount; i++)
+        sortRow(matrixA[i], columnCount);
 
+    return matrixA;
 }
