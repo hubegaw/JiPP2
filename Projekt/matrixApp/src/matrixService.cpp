@@ -40,7 +40,7 @@ void Matrix::showMatrix(const char *matrixType){
         for (int i = 0; i < rowCount; i++) {
             for (int j = 0; j < columnCount; j++)
                 cout << doubleMatrix[i][j] << " ";
-            cout << endl;;
+            cout << endl;
         }
     }
 }

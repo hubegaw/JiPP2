@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
             fillAndDisplay(matrixA, matrixB, matrixType);
 
             cout << "\nWynik dodawania:\n";
-            matrix.intMatrix = addMatrix(matrixA.intMatrix, matrixB.intMatrix, matrix.intMatrix, matrix.rowCount, matrix.columnCount);
+            matrix.intMatrix = addMatrix(matrixA.intMatrix, matrixB.intMatrix, matrix.rowCount, matrix.columnCount);
             matrix.showMatrix(matrixType);
         }
         else if (strcmp(matrixType, "double") == 0) {
@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
             fillAndDisplay(matrixA, matrixB, matrixType);
 
             cout << "\nWynik dodawania:\n";
-            matrix.doubleMatrix = addMatrix(matrixA.doubleMatrix, matrixB.doubleMatrix, matrix.doubleMatrix, matrix.rowCount, matrix.columnCount);
+            matrix.doubleMatrix = addMatrix(matrixA.doubleMatrix, matrixB.doubleMatrix, matrix.rowCount, matrix.columnCount);
             matrix.showMatrix(matrixType);
         }
     }
@@ -76,7 +76,7 @@ int main(int argc, char *argv[]) {
             fillAndDisplay(matrixA, matrixB, matrixType);
 
             cout << "\nWynik odejmowania:\n";
-            matrix.intMatrix = subtractMatrix(matrixA.intMatrix, matrixB.intMatrix, matrix.intMatrix, matrix.rowCount, matrix.columnCount);
+            matrix.intMatrix = subtractMatrix(matrixA.intMatrix, matrixB.intMatrix, matrix.rowCount, matrix.columnCount);
             matrix.showMatrix(matrixType);
         }
         else if (strcmp(matrixType, "double") == 0) {
@@ -84,7 +84,7 @@ int main(int argc, char *argv[]) {
             fillAndDisplay(matrixA, matrixB, matrixType);
 
             cout << "\nWynik odejmowania:\n";
-            matrix.doubleMatrix = subtractMatrix(matrixA.doubleMatrix, matrixB.doubleMatrix, matrix.doubleMatrix, matrix.rowCount, matrix.columnCount);
+            matrix.doubleMatrix = subtractMatrix(matrixA.doubleMatrix, matrixB.doubleMatrix, matrix.rowCount, matrix.columnCount);
             matrix.showMatrix(matrixType);
         }
     }
@@ -107,7 +107,7 @@ int main(int argc, char *argv[]) {
             fillAndDisplay(matrixA, matrixB, matrixType);
 
             cout << "\nWynik mnozenia:\n";
-            matrix.intMatrix = multiplyMatrix(matrixA.intMatrix, matrixB.intMatrix, matrix.intMatrix, matrixA.rowCount,
+            matrix.intMatrix = multiplyMatrix(matrixA.intMatrix, matrixB.intMatrix, matrixA.rowCount,
                                               matrixA.columnCount, matrixB.columnCount);
             matrix.showMatrix(matrixType);
         }
@@ -116,7 +116,7 @@ int main(int argc, char *argv[]) {
             fillAndDisplay(matrixA, matrixB, matrixType);
 
             cout << "\nWynik mnozenia:\n";
-            matrix.doubleMatrix = multiplyMatrix(matrixA.doubleMatrix, matrixB.doubleMatrix, matrix.doubleMatrix, matrixA.rowCount,
+            matrix.doubleMatrix = multiplyMatrix(matrixA.doubleMatrix, matrixB.doubleMatrix, matrixA.rowCount,
                                                  matrixA.columnCount, matrixB.columnCount);
             matrix.showMatrix(matrixType);
         }
@@ -133,7 +133,7 @@ int main(int argc, char *argv[]) {
             fillAndDisplay(matrixA, matrixType);
 
             cout << "\nWynik mnozenia przez skalar:\n";
-            matrix.intMatrix = multiplyByScalar(matrixA.intMatrix, matrix.intMatrix, matrixA.rowCount,
+            matrix.intMatrix = multiplyByScalar(matrixA.intMatrix, matrixA.rowCount,
                                               matrixA.columnCount, matrixA.intScalar);
             matrix.showMatrix(matrixType);
         }
@@ -142,7 +142,7 @@ int main(int argc, char *argv[]) {
             fillAndDisplay(matrixA, matrixType);
 
             cout << "\nWynik mnozenia przez skalar:\n";
-            matrix.doubleMatrix = multiplyByScalar(matrixA.doubleMatrix, matrix.doubleMatrix, matrixA.rowCount,
+            matrix.doubleMatrix = multiplyByScalar(matrixA.doubleMatrix, matrixA.rowCount,
                                                  matrixA.columnCount, matrixA.doubleScalar);
             matrix.showMatrix(matrixType);
         }
@@ -156,7 +156,7 @@ int main(int argc, char *argv[]) {
             fillAndDisplay(matrixA, matrixType);
 
             cout << "\nWynik transponowania macierzy:\n";
-            matrix.intMatrix = transpozeMatrix(matrixA.intMatrix, matrix.intMatrix, matrix.columnCount, matrix.rowCount);
+            matrix.intMatrix = transpozeMatrix(matrixA.intMatrix, matrix.columnCount, matrix.rowCount);
             matrix.showMatrix(matrixType);
         }
         else if(strcmp(matrixType, "double") == 0) {
@@ -164,7 +164,7 @@ int main(int argc, char *argv[]) {
             fillAndDisplay(matrixA, matrixType);
 
             cout << "\nWynik transponowania macierzy:\n";
-            matrix.doubleMatrix = transpozeMatrix(matrixA.doubleMatrix, matrix.doubleMatrix, matrix.columnCount, matrix.rowCount);
+            matrix.doubleMatrix = transpozeMatrix(matrixA.doubleMatrix, matrix.columnCount, matrix.rowCount);
             matrix.showMatrix(matrixType);
         }
     }
@@ -179,7 +179,7 @@ int main(int argc, char *argv[]) {
             fillAndDisplay(matrixA, matrixType);
 
             cout << "\nWynik potegowania:\n";
-            matrix.intMatrix = powerMatrix(matrixA.intMatrix, matrix.intMatrix, matrix.rowCount, matrix.columnCount, matrixA.power);
+            matrix.intMatrix = powerMatrix(matrixA.intMatrix, matrix.rowCount, matrix.columnCount, matrixA.power);
             matrix.showMatrix(matrixType);
 
         }
@@ -188,7 +188,7 @@ int main(int argc, char *argv[]) {
             fillAndDisplay(matrixA, matrixType);
 
             cout << "\nWynik potegowania:\n";
-            matrix.doubleMatrix = powerMatrix(matrixA.doubleMatrix, matrix.doubleMatrix, matrix.rowCount, matrix.columnCount, matrixA.power);
+            matrix.doubleMatrix = powerMatrix(matrixA.doubleMatrix,  matrix.rowCount, matrix.columnCount, matrixA.power);
             matrix.showMatrix(matrixType);
         }
     }

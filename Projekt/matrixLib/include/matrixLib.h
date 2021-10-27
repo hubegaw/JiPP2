@@ -2,23 +2,23 @@
 #define PROJEKT_MATRIXLIB_H
 using namespace std;
 
-int** addMatrix(int **matrixA, int **matrixB, int **matrix, int lineCount, int columnCount);
-double** addMatrix(double **matrixA, double **matrixB, double **matrix, int lineCount, int columnCount);
+int** addMatrix(int **matrixA, int **matrixB, int lineCount, int columnCount);
+double** addMatrix(double **matrixA, double **matrixB, int lineCount, int columnCount);
 
-int** subtractMatrix(int **matrixA, int **matrixB, int **matrix, int lineCount, int columnCount);
-double** subtractMatrix(double **matrixA, double **matrixB, double **matrix, int lineCount, int columnCount);
+int** subtractMatrix(int **matrixA, int **matrixB, int lineCount, int columnCount);
+double** subtractMatrix(double **matrixA, double **matrixB, int lineCount, int columnCount);
 
-int** multiplyMatrix(int **matrixA, int **matrixB, int **matrix, int lineCountA, int columnCountA, int columnCountB);
-double** multiplyMatrix(double **matrixA, double **matrixB, double **matrix, int lineCountA, int columnCountA, int columnCountB);
+int** multiplyMatrix(int **matrixA, int **matrixB, int lineCountA, int columnCountA, int columnCountB);
+double** multiplyMatrix(double **matrixA, double **matrixB, int lineCountA, int columnCountA, int columnCountB);
 
-int** multiplyByScalar(int **matrixA, int **matrix, int lineCount, int columnCount, int scalar);
-double** multiplyByScalar(double **matrixA, double **matrix, int lineCount, int columnCount, double scalar);
+int** multiplyByScalar(int **matrixA, int lineCount, int columnCount, int scalar);
+double** multiplyByScalar(double **matrixA, int lineCount, int columnCount, double scalar);
 
-int** transpozeMatrix(int **matrixA, int **matrix, int lineCount, int columnCount);
-double** transpozeMatrix(double **matrixA, double **matrix, int lineCount, int columnCount);
+int** transpozeMatrix(int **matrixA, int lineCount, int columnCount);
+double** transpozeMatrix(double **matrixA, int lineCount, int columnCount);
 
-int** powerMatrix(int **matrixA, int **matrix, int rowCount, int columnCount, unsigned power);
-double** powerMatrix(double **matrixA, double **matrix, int rowCount, int columnCount, unsigned power);
+int** powerMatrix(int **matrixA, int rowCount, int columnCount, unsigned power);
+double** powerMatrix(double **matrixA, int rowCount, int columnCount, unsigned power);
 
 int determinantMatrix(int **matrixA, int **matrix, int rowCount);
 double determinantMatrix(double **matrixA, double **matrix, int rowCount);
