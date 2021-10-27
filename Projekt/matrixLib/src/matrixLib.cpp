@@ -1,4 +1,6 @@
 #include "../include/matrixLib.h"
+#include <math.h>
+#include <iostream>
 
 static int i, j;
 
@@ -104,65 +106,154 @@ double** transpozeMatrix(double **matrixA, double **matrix, int rowCount, int co
 
 int** powerMatrix(int **matrixA, int **matrix, int rowCount, int columnCount, unsigned power) {
     for(i = 0; i < rowCount; i++) {
-        for(j = 0; j < columnCount; j++) {
-
-        }
+        for(j = 0; j < columnCount; j++)
+            matrix[i][j] = pow(matrixA[i][j], power);
     }
     return matrix;
 }
 
 double** powerMatrix(double **matrixA, double **matrix, int rowCount, int columnCount, unsigned power) {
-
+    for(i = 0; i < rowCount; i++) {
+        for(j = 0; j < columnCount; j++)
+            matrix[i][j] = pow(matrixA[i][j], power);
+    }
     return matrix;
 }
-/*
+
 //----------------------------------wyznacznik macierzy-------------------------------------
 
-int powerMatrix(int **matrixA, int lineCount, int columnCount) {
-
+int determinantMatrix(int **matrixA, int **matrix, int rowCount) {
+    int det = 0;
+    if(rowCount == 1)
+        return matrix[0][0];
+    else if (rowCount == 2)
+        return ((matrixA[0][0] * matrixA[1][1]) - (matrixA[1][0] * matrixA[0][1]));
+    else {
+        for (i = 0; i < rowCount; i++) {
+            int subi = 0;
+            for (j = 1; j < rowCount; j++) {
+                int subj = 0;
+                for (int k = 0; k < rowCount; k++) {
+                    if (k == i)
+                        continue;
+                    matrix[i][j] = matrixA[i][j];
+                    subj++;
+                }
+                subi++;
+            }
+            det += (pow(-1, i) * matrix[0][i] * determinantMatrix( matrixA, matrix, rowCount - 1 ));
+        }
+    }
+    return det;
 }
 
-double powerMatrix(double **matrixA, int lineCount, int columnCount) {
-
+double determinantMatrix(double **matrixA, double **matrix, int rowCount) {
+    double det = 0;
+    if(rowCount == 1)
+        return matrix[0][0];
+    if (rowCount == 2)
+        return ((matrixA[0][0] * matrixA[1][1]) - (matrixA[1][0] * matrixA[0][1]));
+    else {
+        for (i = 0; i < rowCount; i++) {
+            int subi = 0;
+            for (j = 1; j < rowCount; j++) {
+                int subj = 0;
+                for (int k = 0; k < rowCount; k++) {
+                    if (k == i)
+                        continue;
+                    matrix[i][j] = matrixA[i][j];
+                    subj++;
+                }
+                subi++;
+            }
+            det += (pow(-1, i) * matrix[0][i] * determinantMatrix( matrixA, matrix, rowCount - 1 ));
+        }
+    }
+    return det;
 }
-
 //----------------------------------macierz diagonalna--------------------------------------
 
-bool matrixIsDiagonal(int **matrixA, int lineCount, int columnCount) {
-
+bool matrixIsDiagonal(int **matrixA, int rowCount, int columnCount) {
+    for (i = 0; i < rowCount; i++) {
+        for (j = 0; j < columnCount; j++)
+            if ((i != j) && (matrixA[i][j] != 0))
+                return false;
+    }
+    return true;
 }
 
-bool matrixIsDiagonal(double **matrixA, double lineCount, int columnCount) {
 
+bool matrixIsDiagonal(double **matrixA, double rowCount, int columnCount) {
+    for (i = 0; i < rowCount; i++) {
+        for (j = 0; j < columnCount; j++)
+            if ((i != j) && (matrixA[i][j] != 0))
+                return false;
+    }
+    return true;
 }
 
 //------------------------------------zamiana wartości--------------------------------------
 
-int swap(int *a, int *b) {
-
+void swap(int *numberToSwap1_ptr, int *numberToSwap2_ptr) {
+    int temp;
+    temp = *numberToSwap1_ptr;
+    *numberToSwap1_ptr = *numberToSwap2_ptr;
+    *numberToSwap2_ptr = temp;
 }
 
-double swap(double *a, double *b) {
-
+void swap(double *numberToSwap1_ptr, double *numberToSwap2_ptr) {
+    double temp;
+    temp = *numberToSwap1_ptr;
+    *numberToSwap1_ptr = *numberToSwap2_ptr;
+    *numberToSwap2_ptr = temp;
 }
 
 //-----------------------------------sortowanie tablicy-------------------------------------
 
-void sortRow(int *array, int lineCount, int columnCount) {
-
+int* sortRow(int *array, int columnCount) {
+    bool swapped;
+    for (i = 0; i < columnCount-1; i++)
+    {
+        swapped = false;
+        for (j = 0; j < columnCount-i-1; j++)
+        {
+            if (array[j] > array[j+1])
+            {
+                swap(&array[j], &array[j+1]);
+                swapped = true;
+            }
+        }
+        if (swapped == false)
+            break;
+    }
+    return array;
 }
 
-void sortRow(double *array, int lineCount, int columnCount) {
-
+double* sortRow(double *array, int columnCount) {
+    bool swapped;
+    for (i = 0; i < columnCount-1; i++)
+    {
+        swapped = false;
+        for (j = 0; j < columnCount-i-1; j++)
+        {
+            if (array[j] > array[j+1])
+            {
+                swap(&array[j], &array[j+1]);
+                swapped = true;
+            }
+        }
+        if (swapped == false)
+            break;
+    }
+    return array;
 }
 
 //-------------------------------sortowanie wierszy macierzy--------------------------------
 
-void sortRowsInMatrix(int **matrixA, int lineCount, int columnCount) {
+int** sortRowsInMatrix(int **matrixA, int rowCount, int columnCount) {
 
 }
 
-void sortRowsInMatrix(double **matrixA, int lineCount, int columnCount) {
+double** sortRowsInMatrix(double **matrixA, int rowCount, int columnCount) {
 
 }
-*/

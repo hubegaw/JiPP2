@@ -31,3 +31,14 @@ void chooseAction(const char *choice, int argc, const char *matrixType) {
     if(flag == false && (strcmp(matrixType, choices[12]) != 0 || strcmp(matrixType, choices[13]) != 0))
         throw invalid_argument("\nBledny wybor!\n");
 }
+
+void setMatrixSize(int *rowCount_ptr, int *columnCount_ptr) {
+
+    cout << "Podaj liczbe wierszy:";
+    cin >> *rowCount_ptr;
+    cout << "Podaj liczbe kolumn:";
+    cin >> *columnCount_ptr;
+
+    if(*rowCount_ptr <=0 || *columnCount_ptr <=0 || !isdigit(*rowCount_ptr) || !isdigit(*columnCount_ptr))
+        throw("Bledny rozmiar macierzy!");
+}

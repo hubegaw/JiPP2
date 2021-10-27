@@ -11,20 +11,22 @@ public:
     double **doubleMatrix, doubleScalar;
     unsigned power;
 
-    Matrix(const char *matrixType);
-    Matrix(const char *matrixType, int rowCount, int columnCount);
+    Matrix(const char *matrixType, int setRowCount, int setColumnCount);
     void fillMatrix(const char *matrixType);
     void showMatrix(const char *matrixType);
     void setScalar(const char *matrixType);
     void setPower();
-    void matrixServiceSupport(Matrix matrixA, Matrix matrixB, const char *matrixType);
-    void matrixServiceSupport(Matrix matrixA, const char *matrixType);
-    // W jaki sposób mogę zadeklarować zmienne jako prywatne, aby móc je udostępnić do funkcji?
+    // W jaki sposób mogę zadeklarować zmienne jako prywatne, aby móc je udostępnić do funkcji biblioteki?
 };
 
 void startInstructions();
 void help();
 void chooseAction(const char *choice, int argc, const char *matrixType);
+void setMatrixSize(int *rowCount_ptr, int *columnCount_ptr);
+void fillAndDisplay(Matrix matrixA, Matrix matrixB, const char *matrixType);
+void fillAndDisplay(Matrix matrixA, const char *matrixType);
+void CoordinatesToSwapNumbers(int *a1, int *a2, int *b1, int *b2);
+void chooseRowToSort(int *chooseRow);
 
 #endif //PROJEKT_APPSERVICE_H
 

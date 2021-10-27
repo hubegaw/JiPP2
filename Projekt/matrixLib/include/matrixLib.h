@@ -20,19 +20,19 @@ double** transpozeMatrix(double **matrixA, double **matrix, int lineCount, int c
 int** powerMatrix(int **matrixA, int **matrix, int rowCount, int columnCount, unsigned power);
 double** powerMatrix(double **matrixA, double **matrix, int rowCount, int columnCount, unsigned power);
 
-int powerMatrix(int **matrixA, int lineCount, int columnCount);
-double powerMatrix(double **matrixA, int lineCount, int columnCount);
+int determinantMatrix(int **matrixA, int **matrix, int rowCount);
+double determinantMatrix(double **matrixA, double **matrix, int rowCount);
 
-bool matrixIsDiagonal(int **matrixA, int lineCount, int columnCount);
-bool matrixIsDiagonal(double **matrixA, double lineCount, int columnCount);
+bool matrixIsDiagonal(int **matrixA, int rowCount, int columnCount);
+bool matrixIsDiagonal(double **matrixA, double rowCount, int columnCount);
 
-int swap(int *a, int *b);
-double swap(double *a, double *b);
+void swap(int *numberToSwap1_ptr, int *numberToSwap2_ptr);
+void swap(double *numberToSwap1_ptr, double *numberToSwap2_ptr);
 
-void sortRow(int *array, int lineCount, int columnCount);
-void sortRow(double *array, int lineCount, int columnCount);
+int* sortRow(int *array, int columnCount);
+double* sortRow(double *array, int columnCount);
 
-void sortRowsInMatrix(int **matrixA, int lineCount, int columnCount);
-void sortRowsInMatrix(double **matrixA, int lineCount, int columnCount);
+int** sortRowsInMatrix(int **matrixA, int rowCount, int columnCount);
+double** sortRowsInMatrix(double **matrixA, int rowCount, int columnCount);
 
 #endif //PROJEKT_MATRIXLIB_H
