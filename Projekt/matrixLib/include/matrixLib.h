@@ -20,8 +20,8 @@ double** transpozeMatrix(double **matrixA, int lineCount, int columnCount);
 int** powerMatrix(int **matrixA, int rowCount, int columnCount, unsigned power);
 double** powerMatrix(double **matrixA, int rowCount, int columnCount, unsigned power);
 
-int determinantMatrix(int **matrixA, int **matrix, int rowCount);
-double determinantMatrix(double **matrixA, double **matrix, int rowCount);
+int determinantMatrix(int **matrixA, int rowCount, int columnCount);
+double determinantMatrix(double **matrixA, int rowCount, int columnCount);
 
 bool matrixIsDiagonal(int **matrixA, int rowCount, int columnCount);
 bool matrixIsDiagonal(double **matrixA, double rowCount, int columnCount);

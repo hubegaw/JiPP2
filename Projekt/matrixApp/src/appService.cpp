@@ -39,6 +39,6 @@ void setMatrixSize(int *rowCount_ptr, int *columnCount_ptr) {
     cout << "Podaj liczbe kolumn:";
     cin >> *columnCount_ptr;
 
-    if(*rowCount_ptr <=0 || *columnCount_ptr <=0 || !isdigit(*rowCount_ptr) || !isdigit(*columnCount_ptr))
-        throw("Bledny rozmiar macierzy!");
+    if(*rowCount_ptr <=0 || *columnCount_ptr <=0 /*|| !isdigit(*rowCount_ptr) || !isdigit(*columnCount_ptr)*/)
+        throw invalid_argument("\n\nBledny rozmiar macierzy!");
 }

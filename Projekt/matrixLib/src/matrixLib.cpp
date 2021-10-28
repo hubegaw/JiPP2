@@ -146,16 +146,39 @@ double** transpozeMatrix(double **matrixA, int rowCount, int columnCount) {
 
 int** powerMatrix(int **matrixA, int rowCount, int columnCount, unsigned power) {
     int** resultMatrix = new int*[rowCount];
-    for (int i = 0; i < rowCount; i++)
+    for (i = 0; i < rowCount; i++)
         resultMatrix[i] = new int[columnCount];
+
+    int** tempMatrix = new int*[rowCount];
+    for (i = 0; i < rowCount; i++)
+        tempMatrix[i] = new int[columnCount];
 
     for(i = 0; i < rowCount; i++) {
         for(j = 0; j < columnCount; j++)
-            resultMatrix[i][j] = 0;
-        for(int k = 0; k < columnCount; k++) {
-            resultMatrix[i][j] = resultMatrix[i][k] * matrixA[k][j];
-        }
+            resultMatrix[i][j] = matrixA[i][j];
     }
+
+    int result;
+    while(power > 1) {
+        for(i = 0; i < rowCount; i++ ) {
+            for (j = 0; j < columnCount; j++) {
+                result = 0;
+                for (int k = 0; k < columnCount; k++) {
+                    result += resultMatrix[i][k] * matrixA[k][j];
+                }
+                tempMatrix[i][j] = result;
+            }
+        }
+        for (int k = 0; k < rowCount; k++)
+        {
+            for (int l = 0; l < columnCount;l++)
+                resultMatrix[k][l] = tempMatrix[k][l];
+        }
+
+        power--;
+
+    }
+
     return resultMatrix;
 }
 
@@ -164,63 +187,87 @@ double** powerMatrix(double **matrixA, int rowCount, int columnCount, unsigned p
     for (i = 0; i < rowCount; i++)
         resultMatrix[i] = new double[columnCount];
 
+    double** tempMatrix = new double*[rowCount];
+    for (i = 0; i < rowCount; i++)
+        tempMatrix[i] = new double[columnCount];
+
     for(i = 0; i < rowCount; i++) {
         for(j = 0; j < columnCount; j++)
-            resultMatrix[i][j] = pow(matrixA[i][j], power);
+            resultMatrix[i][j] = matrixA[i][j];
+    }
+
+    double result;
+    while(power > 1) {
+        for(i = 0; i < rowCount; i++ ) {
+            for (j = 0; j < columnCount; j++) {
+                result = 0;
+                for (int k = 0; k < columnCount; k++) {
+                    result += resultMatrix[i][k] * matrixA[k][j];
+                }
+                tempMatrix[i][j] = result;
+            }
+        }
+        for (int k = 0; k < rowCount; k++) {
+            for (int l = 0; l < columnCount;l++)
+                resultMatrix[k][l] = tempMatrix[k][l];
+        }
+
+        power--;
+
     }
     return resultMatrix;
 }
 
 //----------------------------------wyznacznik macierzy-------------------------------------
 
-int determinantMatrix(int **matrixA, int **matrix, int rowCount) {
-    int det = 0;
+int determinantMatrix(int **matrixA, int rowCount, int columnCount) {
+    int** subMatrix = new int*[rowCount];
+    for (int i = 0; i < rowCount; i++)
+        subMatrix[i] = new int[columnCount];
+
+    int determinant = 0;
     if(rowCount == 1)
-        return matrix[0][0];
+        return subMatrix[0][0];
     else if (rowCount == 2)
         return ((matrixA[0][0] * matrixA[1][1]) - (matrixA[1][0] * matrixA[0][1]));
     else {
         for (i = 0; i < rowCount; i++) {
-            int subi = 0;
             for (j = 1; j < rowCount; j++) {
-                int subj = 0;
                 for (int k = 0; k < rowCount; k++) {
                     if (k == i)
                         continue;
-                    matrix[i][j] = matrixA[i][j];
-                    subj++;
+                    subMatrix[i][j] = matrixA[i][j];
                 }
-                subi++;
             }
-            det += (pow(-1, i) * matrix[0][i] * determinantMatrix( matrixA, matrix, rowCount - 1 ));
+            determinant += (pow(-1, i) * subMatrix[0][i] * determinantMatrix( matrixA, rowCount - 1, columnCount-1));
         }
     }
-    return det;
+    return determinant;
 }
 
-double determinantMatrix(double **matrixA, double **matrix, int rowCount) {
-    double det = 0;
+double determinantMatrix(double **matrixA, int rowCount, int columnCount) {
+    double** subMatrix = new double*[rowCount];
+    for (int i = 0; i < rowCount; i++)
+        subMatrix[i] = new double[columnCount];
+
+    double determinant = 0;
     if(rowCount == 1)
-        return matrix[0][0];
+        return subMatrix[0][0];
     if (rowCount == 2)
         return ((matrixA[0][0] * matrixA[1][1]) - (matrixA[1][0] * matrixA[0][1]));
     else {
         for (i = 0; i < rowCount; i++) {
-            int subi = 0;
             for (j = 1; j < rowCount; j++) {
-                int subj = 0;
                 for (int k = 0; k < rowCount; k++) {
                     if (k == i)
                         continue;
-                    matrix[i][j] = matrixA[i][j];
-                    subj++;
+                    subMatrix[i][j] = matrixA[i][j];
                 }
-                subi++;
             }
-            det += (pow(-1, i) * matrix[0][i] * determinantMatrix( matrixA, matrix, rowCount - 1 ));
+            determinant += (pow(-1, i) * subMatrix[0][i] * determinantMatrix( matrixA, rowCount - 1, columnCount -1));
         }
     }
-    return det;
+    return determinant;
 }
 //----------------------------------macierz diagonalna--------------------------------------
 

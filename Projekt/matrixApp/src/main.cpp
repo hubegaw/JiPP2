@@ -194,19 +194,17 @@ int main(int argc, char *argv[]) {
     }
     else if(strcmp(choice, "determinantMatrix") == 0) {
 
-        Matrix matrix(matrixType, matrixA.rowCount, matrixA.columnCount);
-
         if(strcmp(matrixType, "int") == 0) {
 
             fillAndDisplay(matrixA, matrixType);
 
-            cout << "\nWyznacznik macierzy: " << determinantMatrix(matrixA.intMatrix, matrix.intMatrix, matrixA.rowCount);
+            cout << "\nWyznacznik macierzy: " << determinantMatrix(matrixA.intMatrix, matrixA.rowCount, matrixA.columnCount);
         }
         else if(strcmp(matrixType, "double") == 0) {
 
             fillAndDisplay(matrixA, matrixType);
 
-            cout << "\nWyznacznik macierzy: " << determinantMatrix(matrixA.doubleMatrix, matrix.doubleMatrix, matrixA.rowCount);
+            cout << "\nWyznacznik macierzy: " << determinantMatrix(matrixA.doubleMatrix, matrixA.rowCount, matrixA.columnCount);
         }
     }
     else if(strcmp(choice, "matrixIsDiagonal") == 0) {
@@ -233,34 +231,6 @@ int main(int argc, char *argv[]) {
 
             if(!matrixIsDiagonal(matrixA.doubleMatrix, matrixA.rowCount, matrixA.columnCount)) cout << " falsz\n";
             else cout << " prawda\n";
-        }
-    }
-    else if(strcmp(choice, "swap") == 0) {
-
-        int a1, b1, a2, b2;
-        int *a1_ptr = &a1, *a2_ptr = &a2, *b1_ptr = &b1, *b2_ptr = &b2;
-
-        if(strcmp(matrixType, "int") == 0) {
-
-            fillAndDisplay(matrixA, matrixType);
-            CoordinatesToSwapNumbers(a1_ptr, a2_ptr, b1_ptr, b2_ptr);
-
-            int *numberToSwap1 = &matrixA.intMatrix[a1][b1], *numberToSwap2 = &matrixA.intMatrix[a2][b2];
-
-            cout << "\nMacierz A po zamianie liczb miejscami:\n";
-            swap(numberToSwap1, numberToSwap2);
-            matrixA.showMatrix(matrixType);
-        }
-        else if(strcmp(matrixType, "double") == 0) {
-
-            double *numberToSwap1= &matrixA.doubleMatrix[a1][b1], *numberToSwap2 = &matrixA.doubleMatrix[a2][b2];
-
-            fillAndDisplay(matrixA, matrixType);
-            CoordinatesToSwapNumbers(a1_ptr, a2_ptr, b1_ptr, b2_ptr);
-
-            cout << "\nMacierz A po zamianie liczb miejscami:\n";
-            swap(numberToSwap1, numberToSwap2);
-            matrixA.showMatrix(matrixType);
         }
     }
     else if(strcmp(choice, "swap") == 0) {
@@ -335,7 +305,7 @@ int main(int argc, char *argv[]) {
 
             fillAndDisplay(matrixA, matrixType);
 
-            cout << "\nTablica posortowana:\n";
+            cout << "\nPosortowane wiersze w macierzy:\n";
             sortRowsInMatrix(matrixA.intMatrix, matrixA.rowCount, matrixA.columnCount);
             matrixA.showMatrix(matrixType);
 
@@ -344,7 +314,7 @@ int main(int argc, char *argv[]) {
 
             fillAndDisplay(matrixA, matrixType);
 
-            cout << "\nTablica posortowana:\n";
+            cout << "\nPosortowane wiersze w macierzy:\n";
             sortRowsInMatrix(matrixA.doubleMatrix, matrixA.rowCount, matrixA.columnCount);
             matrixA.showMatrix(matrixType);
 
