@@ -5,6 +5,9 @@
 #include <matrixLib.h>
 using namespace std;
 
+// W pliku znajduje się klasa Matrix zawierająca potrzebne zmienne oraz funkcje do sprawnego tworzenia i obsługiwania macierzy.
+// Pod macierzą znajdują się deklaracje innych funkcji obsługujących macierze oraz aplikację.
+
 class Matrix {
 public:
     int **intMatrix, intScalar, columnCount, rowCount;

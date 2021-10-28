@@ -1,7 +1,7 @@
 #include "../include/appService.h"
 
-Matrix::Matrix(const char* matrixType, int setRowCount, int setColumnCount) {
-    rowCount = setRowCount;
+Matrix::Matrix(const char* matrixType, int setRowCount, int setColumnCount) {   // funkcja tworzy macierz int lub double w zależności
+    rowCount = setRowCount;                                                     // co podał użytkownik do zmiennej matrixType
     columnCount = setColumnCount;
 
     if(strcmp(matrixType, "int") == 0) {
@@ -16,8 +16,8 @@ Matrix::Matrix(const char* matrixType, int setRowCount, int setColumnCount) {
     }
 }
 
-void Matrix::fillMatrix(const char* matrixType){
-    if(strcmp(matrixType, "int") == 0) {
+void Matrix::fillMatrix(const char* matrixType){    //funkcja pozwalająca wypełnić liczbami macierz, sama dobiera czy jest to macierz
+    if(strcmp(matrixType, "int") == 0) {            // typu int czy double
         for (int i = 0; i < rowCount; i++)
             for (int j = 0; j < columnCount; j++)
                 cin >> intMatrix[i][j];
@@ -29,7 +29,7 @@ void Matrix::fillMatrix(const char* matrixType){
     }
 }
 
-void Matrix::showMatrix(const char *matrixType){
+void Matrix::showMatrix(const char *matrixType){    // funkcja pozwalająca wyświetlić macierz w zależności czy jest typu int czy double
     if (strcmp(matrixType, "int") == 0) {
         for (int i = 0; i < rowCount; i++) {
             for (int j = 0; j < columnCount; j++)
@@ -45,19 +45,30 @@ void Matrix::showMatrix(const char *matrixType){
     }
 }
 
-void Matrix::setScalar(const char *matrixType) {
+void setMatrixSize(int *rowCount_ptr, int *columnCount_ptr) {   // funkcja wczytuje od użytkownika rozmiar macierzy oraz
+                                                                // sprawdza czy wymiary są poprawne
+    cout << "Podaj liczbe wierszy:";
+    cin >> *rowCount_ptr;
+    cout << "Podaj liczbe kolumn:";
+    cin >> *columnCount_ptr;
+
+    if(*rowCount_ptr <=0 || *columnCount_ptr <=0)
+        throw invalid_argument("\n\nBledny rozmiar macierzy!");
+}
+
+void Matrix::setScalar(const char *matrixType) {    //funkcja pozwalająca wczytać skalar przez użytkownika
     if (strcmp(matrixType, "int") == 0)
         cin >> intScalar;
     else if (strcmp(matrixType, "double") == 0)
         cin >> doubleScalar;
 }
-void Matrix::setPower() {
+void Matrix::setPower() {       // funkcja pozwalająca wczytać potęge przez użytkownika
     cout << "Podaj potege:";
     cin >> power;
 }
 
-void fillAndDisplay(Matrix matrixA, Matrix matrixB, const char *matrixType) {
-    cout << "Wprowadz macierz A\n";
+void fillAndDisplay(Matrix matrixA, Matrix matrixB, const char *matrixType) {   // funkcja ma za zadanie wspomóc proces wypełniania
+    cout << "Wprowadz macierz A\n";                                             // macierzy oraz ich wyświetlanie
     matrixA.fillMatrix(matrixType);
     cout << "Wprowadz macierz B\n";
     matrixB.fillMatrix(matrixType);
@@ -68,7 +79,7 @@ void fillAndDisplay(Matrix matrixA, Matrix matrixB, const char *matrixType) {
     matrixB.showMatrix(matrixType);
 }
 
-void fillAndDisplay(Matrix matrixA, const char *matrixType) {
+void fillAndDisplay(Matrix matrixA, const char *matrixType) {   // przeciążona funkcja wspomagająca wypełnienie i wyświetlenie jednej macierzy
     cout << "Wprowadz macierz A\n";
     matrixA.fillMatrix(matrixType);
 
@@ -76,14 +87,17 @@ void fillAndDisplay(Matrix matrixA, const char *matrixType) {
     matrixA.showMatrix(matrixType);
 }
 
-void CoordinatesToSwapNumbers(int *a1, int *a2, int *b1, int *b2) {
-    cout << "\nPodaj wspolrzedne [a][b] liczb, ktore chcesz ze soba zamienic: \nLiczba a:\n";
+void CoordinatesToSwapNumbers(int *a1, int *a2, int *b1, int *b2) {                             // funkcja pozwalająca wczytać współrzędne liczb w macierzy
+    cout << "\nPodaj wspolrzedne [a][b] liczb, ktore chcesz ze soba zamienic: \nLiczba a:\n";   // które chcemy ze sobą zamienić miejscami
     cin >> *a1 >> *b1;
     cout << "Liczba b:\n";
     cin >> *a2 >> *b2;
+
+    if(*a1 < 0 || *b1 < 0  || *a2 < 0 || *b2 < 0)
+        throw invalid_argument("\nNiepoprawna dana!\n");
 }
 
-void chooseRowToSort(int *chooseRow) {
+void chooseRowToSort(int *chooseRow) {                  // funkcja wczytuje od użytkownika wiersz macierzy
     cout << "Wybierz wiersz do posortowania: \n";
     cin >> *chooseRow;
 
