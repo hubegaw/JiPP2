@@ -148,6 +148,7 @@ double** transpozeMatrix(double **matrixA, int rowCount, int columnCount) {
 }
 
 //----------------------------------potęgowanie macierzy------------------------------------
+
 // funkcja potęguje macierz i zwraca macierz z wynikiem operacji
 int** powerMatrix(int **matrixA, int rowCount, int columnCount, unsigned power) {
     int** resultMatrix = createMatrix(rowCount, columnCount);
@@ -179,6 +180,7 @@ int** powerMatrix(int **matrixA, int rowCount, int columnCount, unsigned power) 
     return resultMatrix;
 }
 
+// funkcja potęguje macierz i zwraca macierz z wynikiem operacji
 double** powerMatrix(double **matrixA, int rowCount, int columnCount, unsigned power) {
     double d = 0;
     double** resultMatrix = createMatrix(rowCount, columnCount, d);
@@ -210,7 +212,8 @@ double** powerMatrix(double **matrixA, int rowCount, int columnCount, unsigned p
 }
 
 //----------------------------------wyznacznik macierzy-------------------------------------
-//funkcja licz wyznacznik macierzy i zwraca wynik
+
+//funkcja liczy wyznacznik macierzy i zwraca wynik
 int determinantMatrix(int **matrixA, int rowCount, int columnCount) {
     int** subMatrix = createMatrix(rowCount, columnCount);
 
@@ -234,6 +237,7 @@ int determinantMatrix(int **matrixA, int rowCount, int columnCount) {
     return determinant;
 }
 
+//funkcja liczy wyznacznik macierzy i zwraca wynik
 double determinantMatrix(double **matrixA, int rowCount, int columnCount) {
     double d = 0;
     double** subMatrix = createMatrix(rowCount, columnCount, d);
@@ -258,7 +262,8 @@ double determinantMatrix(double **matrixA, int rowCount, int columnCount) {
     return determinant;
 }
 //----------------------------------macierz diagonalna--------------------------------------
-// funkcjaa sprawdza czy podana macierz jest diagonalna i zwraca true, gdy prawda i false, gdy fałsz
+
+// funkcja sprawdza czy podana macierz jest diagonalna i zwraca true, gdy prawda lub false, gdy fałsz
 bool matrixIsDiagonal(int **matrixA, int rowCount, int columnCount) {
     for (i = 0; i < rowCount; i++) {
         for (j = 0; j < columnCount; j++)
@@ -268,6 +273,7 @@ bool matrixIsDiagonal(int **matrixA, int rowCount, int columnCount) {
     return true;
 }
 
+// funkcja sprawdza czy podana macierz jest diagonalna i zwraca true, gdy prawda lub false, gdy fałsz
 bool matrixIsDiagonal(double **matrixA, double rowCount, int columnCount) {
     for (i = 0; i < rowCount; i++) {
         for (j = 0; j < columnCount; j++)
@@ -278,7 +284,8 @@ bool matrixIsDiagonal(double **matrixA, double rowCount, int columnCount) {
 }
 
 //------------------------------------zamiana wartości--------------------------------------
-// funkcja zamienia ze sobą wartości
+
+// funkcja zamienia ze sobą przekazane wartości
 void swap(int *numberToSwap1_ptr, int *numberToSwap2_ptr) {
     int temp;
     temp = *numberToSwap1_ptr;
@@ -286,6 +293,7 @@ void swap(int *numberToSwap1_ptr, int *numberToSwap2_ptr) {
     *numberToSwap2_ptr = temp;
 }
 
+// funkcja zamienia ze sobą przekazane wartości
 void swap(double *numberToSwap1_ptr, double *numberToSwap2_ptr) {
     double temp;
     temp = *numberToSwap1_ptr;
@@ -294,6 +302,7 @@ void swap(double *numberToSwap1_ptr, double *numberToSwap2_ptr) {
 }
 
 //-----------------------------------sortowanie tablicy-------------------------------------
+
 // funkcja sortuje rosnąco podany wiersz macierzy
 int* sortRow(int *array, int columnCount) {
     bool swapped;
@@ -314,6 +323,7 @@ int* sortRow(int *array, int columnCount) {
     return array;
 }
 
+// funkcja sortuje rosnąco podany wiersz macierzy
 double* sortRow(double *array, int columnCount) {
     bool swapped;
     for (i = 0; i < columnCount-1; i++)
@@ -334,6 +344,7 @@ double* sortRow(double *array, int columnCount) {
 }
 
 //-------------------------------sortowanie wierszy macierzy--------------------------------
+
 // funkcja sortuje rosnąco wiersze w macierzy
 int** sortRowsInMatrix(int **matrixA, int rowCount, int columnCount) {
     for(i = 0; i < rowCount; i++)
@@ -342,6 +353,7 @@ int** sortRowsInMatrix(int **matrixA, int rowCount, int columnCount) {
     return matrixA;
 }
 
+// funkcja sortuje rosnąco wiersze w macierzy
 double** sortRowsInMatrix(double **matrixA, int rowCount, int columnCount) {
     for(i = 0; i < rowCount; i++)
         sortRow(matrixA[i], columnCount);
