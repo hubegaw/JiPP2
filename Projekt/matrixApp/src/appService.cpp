@@ -1,6 +1,6 @@
 #include "../include/appService.h"
 
-void startInstructions() {
+void startInstructions() {  // funkcja wyświetla pomoc
     cout << "Program do roznych dzialan na macierzach.\n\nWpisz:" << endl;
     cout << "1. addmatrix - dodawanie dwoch macierzy\n2. subtractMatrix - odejmowanie dwoch macierzy\n3. multiplyMatrix - mnozenie dwoch macierzy\n4. multiplyByScalar - mnozenie przez skalar\n";
     cout << "5. transpozeMatrix - transponowanie macierzy\n6. powerMatrix - potegowanie macierzy\n7. determinantMatrix - wyznacznik macierzy\n8. matrixIsDiagonal - sprawdzanie, czy macierz jest diagonalna\n";
@@ -8,7 +8,7 @@ void startInstructions() {
             "\nNastepnie wpisz 'int', jezeli macierz ma byc typu int lub 'double', jezeli macierz ma byc typu double.\n" << endl;
 }
 
-void help() {
+void help() {   // funkcja wyświetla pomoc
     cout << "Macierze moga byc typu int lub double, wiersze i kolumn jedynie typu int\n" << endl;
     cout << "Wprowadz odpowiednio dla:" << endl;
     cout << "1. ilosc wierszy, ilosc kolumn, macierz A oraz macierz B\n2. ilosc wierszy, ilosc kolumn, macierz A oraz macierz B\n"
@@ -19,7 +19,7 @@ void help() {
             "11. ilosc wierszy, ilosc kolumn, macierz A";
 }
 
-void chooseAction(const char *choice, int argc, const char *matrixType) {
+void chooseAction(const char *choice, int argc, const char *matrixType) {   // funkcja sprawdzająca poprawność wczytanych argumentów
     static const char *choices[] = {"addMatrix", "subtractMatrix", "multiplyMatrix", "multiplyByScalar", "transpozeMatrix", "powerMatrix",
                         "determinantMatrix", "matrixIsDiagonal", "swap", "sortRow", "sortRowsInMatrix", "help", "int", "double"};
     static bool flag = false;
@@ -30,15 +30,4 @@ void chooseAction(const char *choice, int argc, const char *matrixType) {
     }
     if(flag == false && (strcmp(matrixType, choices[12]) != 0 || strcmp(matrixType, choices[13]) != 0))
         throw invalid_argument("\nBledny wybor!\n");
-}
-
-void setMatrixSize(int *rowCount_ptr, int *columnCount_ptr) {
-
-    cout << "Podaj liczbe wierszy:";
-    cin >> *rowCount_ptr;
-    cout << "Podaj liczbe kolumn:";
-    cin >> *columnCount_ptr;
-
-    if(*rowCount_ptr <=0 || *columnCount_ptr <=0 /*|| !isdigit(*rowCount_ptr) || !isdigit(*columnCount_ptr)*/)
-        throw invalid_argument("\n\nBledny rozmiar macierzy!");
 }

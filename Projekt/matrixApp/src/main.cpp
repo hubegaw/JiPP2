@@ -241,7 +241,13 @@ int main(int argc, char *argv[]) {
         if(strcmp(matrixType, "int") == 0) {
 
             fillAndDisplay(matrixA, matrixType);
-            CoordinatesToSwapNumbers(a1_ptr, a2_ptr, b1_ptr, b2_ptr);
+            try {
+                CoordinatesToSwapNumbers(a1_ptr, a2_ptr, b1_ptr, b2_ptr);
+            }
+            catch(invalid_argument&e) {
+                cerr << e.what() << endl;
+                return -1;
+            }
 
             int *numberToSwap1 = &matrixA.intMatrix[a1][b1], *numberToSwap2 = &matrixA.intMatrix[a2][b2];
 
@@ -254,7 +260,13 @@ int main(int argc, char *argv[]) {
             double *numberToSwap1= &matrixA.doubleMatrix[a1][b1], *numberToSwap2 = &matrixA.doubleMatrix[a2][b2];
 
             fillAndDisplay(matrixA, matrixType);
-            CoordinatesToSwapNumbers(a1_ptr, a2_ptr, b1_ptr, b2_ptr);
+            try {
+                CoordinatesToSwapNumbers(a1_ptr, a2_ptr, b1_ptr, b2_ptr);
+            }
+            catch(invalid_argument&e) {
+                cerr << e.what() << endl;
+                return -1;
+            }
 
             cout << "\nMacierz A po zamianie liczb miejscami:\n";
             swap(numberToSwap1, numberToSwap2);

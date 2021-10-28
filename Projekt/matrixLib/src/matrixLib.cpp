@@ -1,14 +1,29 @@
 #include "../include/matrixLib.h"
-#include <math.h>
 #include <iostream>
 
 static int i, j;
 
-//---------------------------------dodawanie dwóch macierzy---------------------------------
-int** addMatrix(int **matrixA, int **matrixB, int rowCount, int columnCount) {
+// funkcja tworzy macierz i ją zwraca
+int** createMatrix(int rowCount, int columnCount) {
     int** resultMatrix = new int*[rowCount];
     for (i = 0; i < rowCount; i++)
         resultMatrix[i] = new int[columnCount];
+
+    return resultMatrix;
+}
+
+double** createMatrix(int rowCount, int columnCount, double d) {
+    double** resultMatrix = new double*[rowCount];
+    for (i = 0; i < rowCount; i++)
+        resultMatrix[i] = new double[columnCount];
+
+    return resultMatrix;
+}
+
+//---------------------------------dodawanie dwóch macierzy---------------------------------
+// funkcja przyjmuje macierze oraz ich wymiar, a następnie dodaje je do siebie i zwraca macierz z wynikiem operacji
+int** addMatrix(int **matrixA, int **matrixB, int rowCount, int columnCount) {
+    int** resultMatrix = createMatrix(rowCount, columnCount);
 
     for(i = 0; i < rowCount; i++) {
         for(j = 0; j < columnCount; j++) {
@@ -19,9 +34,8 @@ int** addMatrix(int **matrixA, int **matrixB, int rowCount, int columnCount) {
 }
 
 double** addMatrix(double **matrixA, double **matrixB, int rowCount, int columnCount) {
-    double** resultMatrix = new double*[rowCount];
-    for (i = 0; i < rowCount; i++)
-        resultMatrix[i] = new double[columnCount];
+    double d = 0;
+    double** resultMatrix = createMatrix(rowCount, columnCount, d);
 
     for(i = 0; i < rowCount; i++) {
         for(j = 0; j < columnCount; j++) {
@@ -32,10 +46,9 @@ double** addMatrix(double **matrixA, double **matrixB, int rowCount, int columnC
 }
 
 //--------------------------------odejmowanie dwóch macierzy--------------------------------
+// funkcja przyjmuje macierze oraz ich wymiar, a następnie odejmuje je od siebie i zwraca macierz z wynikiem operacji
 int** subtractMatrix(int **matrixA, int **matrixB, int rowCount, int columnCount) {
-    int** resultMatrix = new int*[rowCount];
-    for (i = 0; i < rowCount; i++)
-        resultMatrix[i] = new int[columnCount];
+    int** resultMatrix = createMatrix(rowCount, columnCount);
 
     for(i = 0; i < rowCount; i++) {
         for(j = 0; j < columnCount; j++) {
@@ -46,9 +59,8 @@ int** subtractMatrix(int **matrixA, int **matrixB, int rowCount, int columnCount
 }
 
 double** subtractMatrix(double **matrixA, double **matrixB, int rowCount, int columnCount) {
-    double** resultMatrix = new double*[rowCount];
-    for (i = 0; i < rowCount; i++)
-        resultMatrix[i] = new double[columnCount];
+    double d = 0;
+    double** resultMatrix = createMatrix(rowCount, columnCount, d);
 
     for(i = 0; i < rowCount; i++) {
         for(j = 0; j < columnCount; j++) {
@@ -59,10 +71,9 @@ double** subtractMatrix(double **matrixA, double **matrixB, int rowCount, int co
 }
 
 //---------------------------------mnożenie dwóch macierzy----------------------------------
+// funkcja przyjmuje macierze oraz ich wymiary, a następnie mnoży je i zwraca macierz z wynikiem operacji
 int** multiplyMatrix(int **matrixA, int **matrixB, int rowCountA, int columnCountA, int columnCountB) {
-    int** resultMatrix = new int*[rowCountA];
-    for (i = 0; i < rowCountA; i++)
-        resultMatrix[i] = new int[columnCountB];
+    int** resultMatrix = createMatrix(rowCountA, columnCountB);
 
     for(i = 0; i < rowCountA; i++) {
         for(j = 0; j < columnCountA; j++) {
@@ -75,9 +86,8 @@ int** multiplyMatrix(int **matrixA, int **matrixB, int rowCountA, int columnCoun
 }
 
 double** multiplyMatrix(double **matrixA, double **matrixB, int rowCountA, int columnCountA, int columnCountB) {
-    double** resultMatrix = new double*[rowCountA];
-    for (i = 0; i < rowCountA; i++)
-        resultMatrix[i] = new double[columnCountB];
+    double d = 0;
+    double** resultMatrix = createMatrix(rowCountA, columnCountB, d);
 
     for(i = 0; i < rowCountA; i++) {
         for(j = 0; j < columnCountA; j++) {
@@ -90,10 +100,9 @@ double** multiplyMatrix(double **matrixA, double **matrixB, int rowCountA, int c
 }
 
 //----------------------------------mnożenie przez skalar-----------------------------------
+// funkcja mnoży macierz przez skalar i zwraca macierz z wynikiem operacji
 int** multiplyByScalar(int **matrixA, int rowCount, int columnCount, int scalar) {
-    int** resultMatrix = new int*[rowCount];
-    for (int i = 0; i < rowCount; i++)
-        resultMatrix[i] = new int[columnCount];
+    int** resultMatrix = createMatrix(rowCount, columnCount);
 
     for(i = 0; i < rowCount; i++) {
         for(j = 0; j < columnCount; j++) {
@@ -104,9 +113,8 @@ int** multiplyByScalar(int **matrixA, int rowCount, int columnCount, int scalar)
 }
 
 double** multiplyByScalar(double **matrixA, int rowCount, int columnCount, double scalar) {
-    double** resultMatrix = new double*[rowCount];
-    for (i = 0; i < rowCount; i++)
-        resultMatrix[i] = new double[columnCount];
+    double d = 0;
+    double** resultMatrix = createMatrix(rowCount, columnCount, d);
 
     for(i = 0; i < rowCount; i++) {
         for(j = 0; j < columnCount; j++) {
@@ -117,11 +125,9 @@ double** multiplyByScalar(double **matrixA, int rowCount, int columnCount, doubl
 }
 
 //---------------------------------transponowanie macierzy----------------------------------
-
+// funkcja transponuje macierz i zwraca macierz z wynikiem operacji
 int** transpozeMatrix(int **matrixA, int rowCount, int columnCount) {
-    int** resultMatrix = new int*[rowCount];
-    for (int i = 0; i < rowCount; i++)
-        resultMatrix[i] = new int[columnCount];
+    int** resultMatrix = createMatrix(rowCount, columnCount);
 
     for(i = 0; i < rowCount; i++) {
         for(j = 0; j < columnCount; j++)
@@ -131,9 +137,8 @@ int** transpozeMatrix(int **matrixA, int rowCount, int columnCount) {
 }
 
 double** transpozeMatrix(double **matrixA, int rowCount, int columnCount) {
-    double** resultMatrix = new double*[rowCount];
-    for (i = 0; i < rowCount; i++)
-        resultMatrix[i] = new double[columnCount];
+    double d = 0;
+    double** resultMatrix = createMatrix(rowCount, columnCount, d);
 
     for(i = 0; i < rowCount; i++) {
         for(j = 0; j < columnCount; j++)
@@ -143,24 +148,19 @@ double** transpozeMatrix(double **matrixA, int rowCount, int columnCount) {
 }
 
 //----------------------------------potęgowanie macierzy------------------------------------
-
+// funkcja potęguje macierz i zwraca macierz z wynikiem operacji
 int** powerMatrix(int **matrixA, int rowCount, int columnCount, unsigned power) {
-    int** resultMatrix = new int*[rowCount];
-    for (i = 0; i < rowCount; i++)
-        resultMatrix[i] = new int[columnCount];
+    int** resultMatrix = createMatrix(rowCount, columnCount);
+    int** tempMatrix = createMatrix(rowCount, columnCount);
 
-    int** tempMatrix = new int*[rowCount];
-    for (i = 0; i < rowCount; i++)
-        tempMatrix[i] = new int[columnCount];
-
-    for(i = 0; i < rowCount; i++) {
+    for(i = 0; i < rowCount; i++) {             // macierz A jest przepisywana do macierzy wynikowej
         for(j = 0; j < columnCount; j++)
             resultMatrix[i][j] = matrixA[i][j];
     }
 
     int result;
-    while(power > 1) {
-        for(i = 0; i < rowCount; i++ ) {
+    while(power > 1) {                          // pętla wykonuje mnożenie elementów macierzy A przez macierz wynikową, a wyniki zapisuje w
+        for(i = 0; i < rowCount; i++ ) {        // macierzy pomocniczej
             for (j = 0; j < columnCount; j++) {
                 result = 0;
                 for (int k = 0; k < columnCount; k++) {
@@ -169,27 +169,20 @@ int** powerMatrix(int **matrixA, int rowCount, int columnCount, unsigned power) 
                 tempMatrix[i][j] = result;
             }
         }
-        for (int k = 0; k < rowCount; k++)
-        {
+        for (int k = 0; k < rowCount; k++) {   // do macierzy wynikowej jest przepisywana macierz tymczasowa z wynikiem potęgowania
             for (int l = 0; l < columnCount;l++)
                 resultMatrix[k][l] = tempMatrix[k][l];
         }
-
         power--;
-
     }
 
     return resultMatrix;
 }
 
 double** powerMatrix(double **matrixA, int rowCount, int columnCount, unsigned power) {
-    double** resultMatrix = new double*[rowCount];
-    for (i = 0; i < rowCount; i++)
-        resultMatrix[i] = new double[columnCount];
-
-    double** tempMatrix = new double*[rowCount];
-    for (i = 0; i < rowCount; i++)
-        tempMatrix[i] = new double[columnCount];
+    double d = 0;
+    double** resultMatrix = createMatrix(rowCount, columnCount, d);
+    double** tempMatrix = createMatrix(rowCount, columnCount, d);
 
     for(i = 0; i < rowCount; i++) {
         for(j = 0; j < columnCount; j++)
@@ -211,26 +204,22 @@ double** powerMatrix(double **matrixA, int rowCount, int columnCount, unsigned p
             for (int l = 0; l < columnCount;l++)
                 resultMatrix[k][l] = tempMatrix[k][l];
         }
-
         power--;
-
     }
     return resultMatrix;
 }
 
 //----------------------------------wyznacznik macierzy-------------------------------------
-
+//funkcja licz wyznacznik macierzy i zwraca wynik
 int determinantMatrix(int **matrixA, int rowCount, int columnCount) {
-    int** subMatrix = new int*[rowCount];
-    for (int i = 0; i < rowCount; i++)
-        subMatrix[i] = new int[columnCount];
+    int** subMatrix = createMatrix(rowCount, columnCount);
 
     int determinant = 0;
-    if(rowCount == 1)
+    if(rowCount == 1) // jeśli macierz ma wymiary 1x1, to zwracana jest jedyna wartość w tej macierzy
         return subMatrix[0][0];
-    else if (rowCount == 2)
+    else if (rowCount == 2) // jeśli macierz ma wymiary 2x2, to liczony jest wyznacznik macierzy
         return ((matrixA[0][0] * matrixA[1][1]) - (matrixA[1][0] * matrixA[0][1]));
-    else {
+    else { // dalsze obliczenia są dla macierzy o wymiarach 3x3 i większych
         for (i = 0; i < rowCount; i++) {
             for (j = 1; j < rowCount; j++) {
                 for (int k = 0; k < rowCount; k++) {
@@ -246,9 +235,8 @@ int determinantMatrix(int **matrixA, int rowCount, int columnCount) {
 }
 
 double determinantMatrix(double **matrixA, int rowCount, int columnCount) {
-    double** subMatrix = new double*[rowCount];
-    for (int i = 0; i < rowCount; i++)
-        subMatrix[i] = new double[columnCount];
+    double d = 0;
+    double** subMatrix = createMatrix(rowCount, columnCount, d);
 
     double determinant = 0;
     if(rowCount == 1)
@@ -270,7 +258,7 @@ double determinantMatrix(double **matrixA, int rowCount, int columnCount) {
     return determinant;
 }
 //----------------------------------macierz diagonalna--------------------------------------
-
+// funkcjaa sprawdza czy podana macierz jest diagonalna i zwraca true, gdy prawda i false, gdy fałsz
 bool matrixIsDiagonal(int **matrixA, int rowCount, int columnCount) {
     for (i = 0; i < rowCount; i++) {
         for (j = 0; j < columnCount; j++)
@@ -279,7 +267,6 @@ bool matrixIsDiagonal(int **matrixA, int rowCount, int columnCount) {
     }
     return true;
 }
-
 
 bool matrixIsDiagonal(double **matrixA, double rowCount, int columnCount) {
     for (i = 0; i < rowCount; i++) {
@@ -291,7 +278,7 @@ bool matrixIsDiagonal(double **matrixA, double rowCount, int columnCount) {
 }
 
 //------------------------------------zamiana wartości--------------------------------------
-
+// funkcja zamienia ze sobą wartości
 void swap(int *numberToSwap1_ptr, int *numberToSwap2_ptr) {
     int temp;
     temp = *numberToSwap1_ptr;
@@ -307,7 +294,7 @@ void swap(double *numberToSwap1_ptr, double *numberToSwap2_ptr) {
 }
 
 //-----------------------------------sortowanie tablicy-------------------------------------
-
+// funkcja sortuje rosnąco podany wiersz macierzy
 int* sortRow(int *array, int columnCount) {
     bool swapped;
     for (i = 0; i < columnCount-1; i++)
@@ -347,7 +334,7 @@ double* sortRow(double *array, int columnCount) {
 }
 
 //-------------------------------sortowanie wierszy macierzy--------------------------------
-
+// funkcja sortuje rosnąco wiersze w macierzy
 int** sortRowsInMatrix(int **matrixA, int rowCount, int columnCount) {
     for(i = 0; i < rowCount; i++)
         sortRow(matrixA[i], columnCount);
