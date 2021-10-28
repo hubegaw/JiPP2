@@ -48,9 +48,14 @@ void Matrix::showMatrix(const char *matrixType){    // funkcja pozwalająca wyś
 void setMatrixSize(int *rowCount_ptr, int *columnCount_ptr) {   // funkcja wczytuje od użytkownika rozmiar macierzy oraz
                                                                 // sprawdza czy wymiary są poprawne
     cout << "Podaj liczbe wierszy:";
-    cin >> *rowCount_ptr;
+    if(cin >> *rowCount_ptr){}//nic nie rób
+    else
+        throw invalid_argument("\nNiepoprawna dana!\n");
+
     cout << "Podaj liczbe kolumn:";
-    cin >> *columnCount_ptr;
+    if(cin >> *columnCount_ptr){}//nic nie rób
+    else
+        throw invalid_argument("\nNiepoprawna dana!\n");
 
     if(*rowCount_ptr <=0 || *columnCount_ptr <=0)
         throw invalid_argument("\n\nBledny rozmiar macierzy!");
@@ -58,13 +63,19 @@ void setMatrixSize(int *rowCount_ptr, int *columnCount_ptr) {   // funkcja wczyt
 
 void Matrix::setScalar(const char *matrixType) {    //funkcja pozwalająca wczytać skalar przez użytkownika
     if (strcmp(matrixType, "int") == 0)
-        cin >> intScalar;
+        if(cin >> intScalar){}//nic nie rób
+        else
+            throw invalid_argument("\nNiepoprawna dana!\n");
     else if (strcmp(matrixType, "double") == 0)
-        cin >> doubleScalar;
+        if(cin >> doubleScalar){}//nic nie rób
+        else
+            throw invalid_argument("\nNiepoprawna dana!\n");
 }
 void Matrix::setPower() {       // funkcja pozwalająca wczytać potęge przez użytkownika
     cout << "Podaj potege:";
-    cin >> power;
+    if(cin >> power){}//nic nie rób
+    else
+        throw invalid_argument("\nNiepoprawna dana!\n");
 }
 
 void fillAndDisplay(Matrix matrixA, Matrix matrixB, const char *matrixType) {   // funkcja ma za zadanie wspomóc proces wypełniania
@@ -97,10 +108,10 @@ void CoordinatesToSwapNumbers(int *a1, int *a2, int *b1, int *b2) {             
         throw invalid_argument("\nNiepoprawna dana!\n");
 }
 
-void chooseRowToSort(int *chooseRow) {                  // funkcja wczytuje od użytkownika wiersz macierzy
-    cout << "Wybierz wiersz do posortowania: \n";
-    cin >> *chooseRow;
-
-    if(*chooseRow < 0 || !isdigit(*chooseRow))
-        throw invalid_argument("\nNiepoprawna dana!\n");
+int chooseRowToSort(int chooseRow) {                  // funkcja wczytuje od użytkownika wiersz macierzy
+        cout << "Wybierz wiersz do posortowania: \n";
+        if (cin >> chooseRow)
+            return chooseRow;
+         else
+            throw invalid_argument("\nNiepoprawna dana!\n");
 }

@@ -29,7 +29,7 @@ void setMatrixSize(int *rowCount_ptr, int *columnCount_ptr);
 void fillAndDisplay(Matrix matrixA, Matrix matrixB, const char *matrixType);
 void fillAndDisplay(Matrix matrixA, const char *matrixType);
 void CoordinatesToSwapNumbers(int *a1, int *a2, int *b1, int *b2);
-void chooseRowToSort(int *chooseRow);
+int chooseRowToSort(int chooseRow);
 
 #endif //PROJEKT_APPSERVICE_H
 
