@@ -1,4 +1,5 @@
 #include "../include/appService.h"
+#include <iomanip> // potrzebne dla setprecision()
 
 int main(int argc, char *argv[]) {
 
@@ -19,8 +20,8 @@ int main(int argc, char *argv[]) {
     if(strcmp(choice, "help") == 0) {
         startInstructions();
         help();
-    }else {
-
+    }
+    else {
         try {
             cout << "\nMacierz A:\n";
             setMatrixSize(rowCountA_ptr, columnCountA_ptr);
@@ -201,7 +202,7 @@ int main(int argc, char *argv[]) {
 
                 fillAndDisplay(matrixA, matrixType);
 
-                cout << "\nWyznacznik macierzy: "
+                cout << "\nWyznacznik macierzy: " << setprecision(3)
                      << determinantMatrix(matrixA.doubleMatrix, matrixA.rowCount, matrixA.columnCount);
             }
         } else if (strcmp(choice, "matrixIsDiagonal") == 0) {
@@ -216,7 +217,8 @@ int main(int argc, char *argv[]) {
                 cout << "\nCzy macierz jest diagonalna?:";
                 if (!matrixIsDiagonal(matrixA.intMatrix, matrixA.rowCount, matrixA.columnCount)) cout << " falsz\n";
                 else cout << " prawda\n";
-            } else if (strcmp(matrixType, "double") == 0) {
+            }
+            else if (strcmp(matrixType, "double") == 0) {
 
                 fillAndDisplay(matrixA, matrixType);
 
