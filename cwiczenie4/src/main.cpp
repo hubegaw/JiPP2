@@ -2,18 +2,6 @@
 #include "../include/functions.h"
 using namespace std;
 
-int najstarszeAuto(SAMOCHOD samochod[], int liczbaPojazdow) {
-    int najstarsze = samochod[0].rokProdukcji;
-    int indeksNajstarszego;
-    for(int i = 0; i < liczbaPojazdow; i++) {
-        if(samochod[i].rokProdukcji < najstarsze) {
-            najstarsze = samochod[i].rokProdukcji;
-            indeksNajstarszego = i;
-        }
-    }
-    return indeksNajstarszego;
-}
-
 int main(int argc, const char *argv[]) {
 
     const char *wybor;
@@ -117,10 +105,15 @@ int main(int argc, const char *argv[]) {
         cout << "Tworze tablice zawierajaca 1024 elementy typu int\n";
 
         Klasa *klasa;
-        for(int i = 0; i < 1024; i++) {
-            klasa->tablica[i] = 1;
+
+        int *tablica = new int[1024];
+        for (int i = 0; i < 1024; i++) {
+            tablica[i] = 1;
         }
-        system("PAUSE");
+
+        pause();
+
+        delete[] tablica;
     }
 
     return 0;

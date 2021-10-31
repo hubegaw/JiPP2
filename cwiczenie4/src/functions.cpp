@@ -12,6 +12,18 @@ int* liczTeSameModele(SAMOCHOD samochod[], int liczbaPojazdow) {
     return ileModeli;
 }
 
+int najstarszeAuto(SAMOCHOD samochod[], int liczbaPojazdow) {
+    int najstarsze = samochod[0].rokProdukcji;
+    int indeksNajstarszego;
+    for(int i = 0; i < liczbaPojazdow; i++) {
+        if(samochod[i].rokProdukcji < najstarsze) {
+            najstarsze = samochod[i].rokProdukcji;
+            indeksNajstarszego = i;
+        }
+    }
+    return indeksNajstarszego;
+}
+
 void Prostopadloscian::ustawSzerokosc(int podanaSzerokosc) {
     szerokosc = podanaSzerokosc;
 }
@@ -100,4 +112,8 @@ Klasa::Klasa() {
 
 Klasa::~Klasa() {
     std::cout << "\nusuwam zaalokowana tablice\n";
+}
+
+void pause() {
+    system("PAUSE");
 }

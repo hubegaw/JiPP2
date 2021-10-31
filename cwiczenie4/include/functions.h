@@ -81,12 +81,13 @@ public:
 
 class Klasa {
 public:
-    int *tablica;
     Klasa();
     ~Klasa();
 };
 
 int* liczTeSameModele(SAMOCHOD samochod[], int liczbaPojazdow);
+int najstarszeAuto(SAMOCHOD samochod[], int liczbaPojazdow);
 double liczOdleglosc(int x_a, int y_a, int x_b, int y_b);
+void pause();
 
 #endif //CWICZENIE4_FUNCTIONS_H
