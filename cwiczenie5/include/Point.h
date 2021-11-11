@@ -5,32 +5,6 @@
 
 using namespace std;
 
-class Vehicle {
-private:
-    string registrationNumber;
-    string name;
-    string type;
-    string brand;
-    int seatsNumber;
-    string *passengers;
-
-public:
-    Vehicle(string registrationNumber, string name, string type, string brand, int seatsNumber, string *passengers);
-    Vehicle(Vehicle& Vehicle);
-
-    void changePassengerInfo(int occupiedSeat, string passengerInfo);
-    void showVehicleInfo();
-
-    void setRegistrationNumber(string registrationNumber);
-    void setName(string name);
-
-    string getRegistrationNumber();
-    string getName();
-    string getType();
-    string getBrand();
-
-};
-
 class Point {
 private:
     double *x = new double;

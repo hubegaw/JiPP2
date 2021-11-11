@@ -1,9 +1,54 @@
 #include <iostream>
 #include "../include/Point.h"
+#include "../include/Vehicle.h"
+#include "../include/Vector.h"
 
 using namespace std;
 
 int main() {
+    int choice;
+    cout << "\nWpisz:\n1. dla zadania 1\n2. dla zadania 2-8\n3. dla zadań 2.3\n\n";
+    cin >> choice;
+
+    if(choice == 1) {
+        Point *p1, *p2;
+        p1 = new Point("P1");
+        p2 = new Point(5, 5, "P2");
+
+        cout << "Initial values" << endl;
+        p1->printData();
+        p2->printData();
+
+        cout << endl << "Create copy of point" << endl;
+        Point *p1c = p1, *p2c = p2;
+
+        p1c->setName("P1c");
+        p2c->setName("P2c");
+
+        cout << "Values after copying" << endl;
+        p1->printData();
+        p2->printData();
+        p1c->printData();
+        p2c->printData();
+
+        cout << endl << "Update P1 and P2 x and y (increase 10)" << endl;
+        p1->setX(10);
+        p1->setY(10);
+        p2->setX(15);
+        p2->setY(15);
+
+        cout << "Values after update values" << endl;
+        p1->printData();
+        p2->printData();
+        p1c->printData();
+        p2c->printData();
+
+        cout << "End program" << endl;
+
+        delete p1;
+        delete p2;
+    }
+    else if(choice == 2) {
         string passengers[5] = {"Ania", "Piotrek", "Zuzia"};
 
         Vehicle car("RP 918440", "Civic", "Hatchback", "Honda", 5, passengers);
@@ -28,46 +73,34 @@ int main() {
         cout << "Car name: " << car.getName() << endl;
         cout << "Car type: " << car.getType() << endl;
         cout << "Car's registration number: " << car.getRegistrationNumber() << endl;
+    }
+    else if(choice == 3) {
+        string passengers[1] = {"Hubert"};
+        Vehicle exampleCar("RP 997526", "M3", "Sedan", "BMW", 5, passengers);
 
-        cout << "\n\n";
-        Point *p1, *p2;
-        p1 = new Point("P1");
-        p2 = new Point(5, 5, "P2");
+        cout << "Installed software version: " << exampleCar.getSoftwareVersion();
 
-        cout << "Initial values" << endl;
-        p1->printData();
-        p2->printData();
+        cout << "Update software!";
+        exampleCar.updateSoftwareVersion();
 
-        cout << endl << "Create copy of point" << endl;
-        Point *p1c = p1, *p2c = p2;
-        //Update copied points names
-        p1c->setName("P1c");
-        p2c->setName("P2c");
+        double newVersion;
+        cout << "Publish new software version: ";
+        cin >> newVersion;
+        Vehicle::publishLatestSoftware(newVersion);
 
-        cout << "Values after copying" << endl;
-        p1->printData();
-        p2->printData();
-        p1c->printData();
-        p2c->printData();
+        cout << "Installed software version: " << exampleCar.getSoftwareVersion();
 
-        cout << endl << "Update P1 and P2 x and y (increase 10)" << endl;
-        p1->setX(10);
-        p1->setY(10);
-        p2->setX(15);
-        p2->setY(15);
+    }
+    else if(choice == 4) {
+        Vector vectorA(2,2);
+        Vector vectorB(6,7);
 
-        cout << "Values after update values" << endl;
-        p1->printData();
-        p2->printData();
-        p1c->printData();
-        p2c->printData();
+        cout << "Vector's A length: " << vectorA.length() << endl;
+        cout << "Vector's B length: " << vectorB.length() << endl;
 
-    cout << "End program" << endl;
-
-    delete p1;
-    delete p2;
-    delete p1c;
-    delete p2c;
-
+        cout << "\nVectors A and B were added" << endl;
+        Vector vectorC = vectorA.operator+(vectorB);
+        cout << "New vector's length: " << vectorC.length() << endl;
+    }
     return 0;
 }
