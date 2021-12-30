@@ -1,20 +1,20 @@
 #ifndef PLANER_WEEKPLANER_H
 #define PLANER_WEEKPLANER_H
 
-#include <iostream>
-#include <list>
-#include "Task.h"
+#include "Day.h"
 
-using namespace std;
-
-class WeekPlaner: public Task{
+class WeekPlan : public Day {
 protected:
-    string month;
-    string day;
-    int hour;
-    int minute;
-    list<Task> PLanForTheDay;
+    int weekNumber=0;
+
 public:
+    virtual void createWeek();
+
+    virtual void showWeekPlan();
+
+    virtual void addWeekPlan();
+
+    virtual void deleteWeekPlan();
 
 };
 

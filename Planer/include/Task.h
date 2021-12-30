@@ -2,27 +2,17 @@
 #define PLANER_TASK_H
 
 #include <iostream>
-#include <vector>
-
-using namespace std;
 
 class Task {
 protected:
-    pair<string,string> task;
-    vector<pair<string,string>> tasks;
+    std::pair<std::string,std::string> task;
 
 public:
-    Task();
+    std::string getTaskTitle();
 
-    void addTask(string title,string content);
+    std::string getTaskContent();
 
-    string getTaskTitle();
-
-    string getTaskContent();
-
-    void removeTask(int taskNumber);
-
-    void showTasksList();
+    void editTask();
 
 };
 
