@@ -2,20 +2,20 @@
 #define LAB10_STOPS_H
 
 class Stops {
-private:
-    int lineNumber;
+protected:
+    std::string lineNumber;
     std::string startName;
     std::string stopName;
     std::string carrier;
 public:
     Stops() {
-        lineNumber = 0;
+        lineNumber = "";
         startName = "";
         stopName = "";
         carrier = "";
     }
 
-    void setLineNumber(int newLineNumber) {
+    void setLineNumber(std::string newLineNumber) {
         this->lineNumber = newLineNumber;
     }
 
@@ -29,6 +29,22 @@ public:
 
     void setCarrier(std::string newCarrier) {
         this->carrier = newCarrier;
+    }
+
+    std::string getLineNumber() {
+        return lineNumber;
+    }
+
+    std::string getStartName() {
+        return startName;
+    }
+
+    std::string getStopName() {
+        return stopName;
+    }
+
+    std::string getCarrier() {
+        return carrier;
     }
 };
 

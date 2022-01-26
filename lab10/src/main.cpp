@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-
+/*
     Vector<int> wektor{3};
 
     wektor.add_elem(1);
@@ -20,9 +20,12 @@ int main() {
 
     wektor.print_elem();
     cout << "\n";
+*/
 
-
-
+    File newFile("MyFile.csv");
+    newFile.openFile();
+    newFile.import();
+    newFile.exportPlan();
 
     return 0;
 }
