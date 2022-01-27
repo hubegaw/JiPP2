@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include "Stops.h"
+#include "myExceptions.h"
 
 class File : public Stops {
 private:
@@ -26,29 +27,26 @@ public:
         myFile.open(fileName, std::ios::in);
 
         if(!myFile.is_open()) {
-            std::cout << "Nie udalo sie otworzyc pliku!\n\n";
-            return;
+            throw MyException();
         }
     }
 
     void exportPlan() {
-        std::fstream Buses;
-        std::fstream Trams;
-        Buses.open("Buses.csv");
-        Trams.open("Trams.csv");
+        std::ofstream Buses("Buses.csv", std::ios::out);
+        std::ofstream Trams("Trams.csv", std::ios::out);
 
         if(Buses.is_open() && Trams.is_open()) {
-            for(auto &stop : stops) {
+            /*for(auto &stop : stops) {
                 if(stoi(stop.getLineNumber()) > 99) {
                     Buses << stop.getLineNumber() << "," << stop.getStartName() << "," << stop.getStopName()
                      << "," << stop.getCarrier() << "\n";
                 } else {
                     Trams << stop.getLineNumber() << "," << stop.getStartName() << "," << stop.getStopName()
                           << "," << stop.getCarrier() << "\n";
-                }
-            }
+               }
+        }*/
         } else {
-            std::cout << "Cos poszlo nie tak!\n";
+            throw MyException();
         }
     }
 
