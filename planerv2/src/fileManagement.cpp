@@ -46,11 +46,17 @@ void Plan::printPlan(bool toFile) {
 }
 
 void Plan::importPlan() {
-    int counter = 0, max;
+    int counter = 0, max, j=0;
     int *max_ptr = &max;
     string line, newLineSign;
 
-    checkFileToRead("dataBase.csv");
+    try {
+        checkFileToRead("dataBase.csv");
+    }
+    catch (FileError &e) {
+        cerr << e.fileError();
+        return;
+    }
 
     while(!myPlan.eof()) {
         if(counter == 0) {
@@ -58,18 +64,15 @@ void Plan::importPlan() {
                 return;
             counter++;
         } else {
-            Day day;
             for(int i = 0; i < max; i++) {
-
                 if(i == max-1) {
                     getline(myPlan, line, '\n');
                 }else {
                     getline(myPlan, line, ',');
                 }
-                day.addTask(line);
+                plan[j].addTask(line);
             }
-            dayPlan.push_back(day);
-            plan.push_back(day);
+            j++;
             counter = 0;
         }
     }
@@ -77,14 +80,14 @@ void Plan::importPlan() {
 }
 
 int takeTasksNumber(fstream &myPlan, int *max_ptr) {
-    string line;
-    getline(myPlan, line, ',');
+    string max;
+    getline(myPlan, max, ',');
 
-    if(line == "\n") {
+    if(max == "\n") {
         return -1;
     }
     try {
-        *max_ptr = stoi(line);
+        *max_ptr = stoi(max);
 
         if(*max_ptr < 0) {
             throw NegativeNumber(*max_ptr);
@@ -134,10 +137,14 @@ void Task::exportTasks(std::fstream & myPlan, bool toDataBase) {
 
 void Plan::checkFileToWrite(std::string fileName) {
     myPlan.open(fileName, ios::out);
-    throw FileError("Nie udalo sie otworzyc pliku\n");
+
+    if(!myPlan.is_open())
+        throw FileError("Nie udalo sie otworzyc pliku\n");
 }
 
 void Plan::checkFileToRead(std::string fileName) {
     myPlan.open(fileName, ios::in);
-    throw FileError("Nie udalo sie otworzyc pliku\n");
+
+    if(!myPlan.is_open())
+        throw FileError("Nie udalo sie otworzyc pliku\n");
 }

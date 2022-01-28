@@ -21,6 +21,10 @@ int Day::getDaySize() {
     return this->dayPlan.size();
 }
 
+void Day::setDaySize(int numberOfTasks) {
+    this->dayPlan.resize(numberOfTasks);
+}
+
 void Day::addTasks() {
     bool firstTaskAdded = false;
     if(checkIfTasksListIsEmpty()) {

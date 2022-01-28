@@ -8,6 +8,8 @@ class Day : public Task {
 protected:
     std::string dayName;
 
+    int numberOfTasks;
+
     /**
      * container for tasks in a day
      */
@@ -93,6 +95,12 @@ public:
      * @return returns number of tasks in a day
      */
     int getDaySize();
+
+    /**
+     * day size setter
+     * @param numberOfTasks - number of tasks given from a file
+     */
+    void setDaySize(int numberOfTasks);
 };
 
 #endif //UNTITLED_DAY_H

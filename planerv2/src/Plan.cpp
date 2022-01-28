@@ -46,7 +46,7 @@ void Plan::printPlan() {
 void Plan::weekInterface() {
     char choice;
 
-    cout << "*****************************\n\n\tPlaner\n\n*****************************\n\n";
+    cout << "\n*****************************\n\n\t   Planer\n\n*****************************\n\n";
 
     while(1) {
         cout << "Wybierz co chcesz zrobic:\n'e' - edytuj dzien\n'w' - wyswietl tydzien\n"
