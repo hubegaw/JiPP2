@@ -26,8 +26,16 @@ class FileError : public std::exception {
 private:
     std::string fileOpenError;
 public:
+    /**
+     * constructor for FileError expection class
+     * @param fileOpenError - text to write in the console
+     */
     FileError(std::string fileOpenError): fileOpenError(fileOpenError) {}
 
+    /**
+     * function return an error text
+     * @return returns error text
+     */
     std::string fileError() {
         return fileOpenError;
     }
