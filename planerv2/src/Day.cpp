@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include <string>
 #include "../include/Day.h"
 
@@ -19,10 +18,6 @@ string Day::getDayName() {
 
 int Day::getDaySize() {
     return this->dayPlan.size();
-}
-
-void Day::setDaySize(int numberOfTasks) {
-    this->dayPlan.resize(numberOfTasks);
 }
 
 void Day::addTasks() {

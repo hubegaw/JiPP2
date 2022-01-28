@@ -1,7 +1,7 @@
 #ifndef UNTITLED_TASK_H
 #define UNTITLED_TASK_H
 
-#define hourLength 4
+//#define hourLength 4
 
 class Task {
 protected:
@@ -58,5 +58,12 @@ public:
      */
     void exportTasks(std::fstream & myPlan, bool toDataBase);
 };
+
+/**
+ * function checks if given task's length is not too long
+ * @param task - description
+ * @return returns true if task's length is enough or false if it's too long
+ */
+bool checkTaskLength(std::string task);
 
 #endif //UNTITLED_TASK_H
