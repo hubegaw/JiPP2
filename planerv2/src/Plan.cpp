@@ -1,26 +1,20 @@
 #include <iostream>
 #include <string>
-#include <fstream>
-#include <iostream>
 #include "../include/Plan.h"
 
 using namespace std;
 
 Plan::Plan() {
-    weekNumber += 1;
+    forDestructorPurpose = new int[20];
 
     for(auto & dayName : week) {
         Day day(dayName);
         plan.push_back(day);
     }
 }
-/*
+
 Plan::~Plan() {
-    cout << "uruchomiono destruktor planu!\n";
-}
-*/
-int Plan::getWeekNumber() {
-    return this->weekNumber;
+    delete forDestructorPurpose;
 }
 
 void Plan::editDay() {
@@ -52,12 +46,11 @@ void Plan::printPlan() {
 void Plan::weekInterface() {
     char choice;
 
-    cout << "*****************************\n\tPlaner\n\ttydzien " << getWeekNumber() <<
-         "\n*****************************\n\n";
+    cout << "*****************************\n\n\tPlaner\n\n*****************************\n\n";
 
     while(1) {
         cout << "Wybierz co chcesz zrobic:\n'e' - edytuj dzien\n'w' - wyswietl tydzien\n"
-                "'s' - exportuj plan do pliku\n'q' - wyjdz z programu\n";
+                "'s' - exportuj plan do pliku\n'i' - importuj plan\n'q' - wyjdz z programu\n";
 
         cin >> choice;
 
@@ -71,6 +64,9 @@ void Plan::weekInterface() {
             case 's':
                 exportPlan();
                 exportPlan(true);
+                break;
+            case 'i':
+                importPlan();
                 break;
             case 'q':
                 return;

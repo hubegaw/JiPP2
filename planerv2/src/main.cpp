@@ -11,13 +11,13 @@ temp ReturnParam(temp param) {
 
 int main(int argc, char *argv[]) {
 
-    char sum=0;
-    char *sum_ptr = &sum;
-
     if(argc == 1)
-        cout << "Uruchomiono program z parametrem" << ReturnParam(argv[1]) << "\n";
+        cout << "Uruchomiono program z parametrem: " << ReturnParam(argv[1]) << "\n";
     else {
-
+        cout << "uruchomiono program z parametrami: ";
+        for(int i = 1; i < argc; i++) {
+            cout << ReturnParam(argv[i]) << " ";
+        }
     }
 
     Planer *WeekPlan = new Plan();

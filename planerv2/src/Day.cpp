@@ -12,11 +12,7 @@ Day::Day() {
 Day::Day(string day) {
     this->dayName = day;
 }
-/*
-Day::~Day() {
-    cout << "uruchomiono destruktor dni!\n";
-}
-*/
+
 string Day::getDayName() {
     return this->dayName;
 }
@@ -26,12 +22,20 @@ int Day::getDaySize() {
 }
 
 void Day::addTasks() {
+    bool firstTaskAdded = false;
     if(checkIfTasksListIsEmpty()) {
         caseNoTasksInList();
+        firstTaskAdded = true;
     }
-    else {
+
+    if(firstTaskAdded){
         caseTasksInList();
     }
+}
+
+void Day::addTask(string task) {
+    Task newTask(task);
+    dayPlan.emplace_back(newTask);
 }
 
 void Day::removeTask(int taskNumber) {
@@ -90,6 +94,8 @@ void Day::caseNoTasksInList() {
 
             Task newTask(task);
             dayPlan.push_back(newTask);
+
+            return;
         }
         else if(choice == 'q') {
             return;
@@ -103,9 +109,10 @@ void Day::caseTasksInList() {
     char choice;
     string task;
     int TaskNumber;
+    bool taskExists = false;
 
     while(1) {
-        cout << "'a' - Dodaj zadanie\n'r' - usun zadanie\n'd' - usun wszystkie zadania\n"
+        cout << "'a' - Dodaj zadanie\n'r' - usun zadanie\n'd' - usun wszystkie zadania\n's' - wyswietl zadania\n"
                 "'q' - wyjdz od menu\n";
 
         cin >> choice;
@@ -123,8 +130,18 @@ void Day::caseTasksInList() {
                 break;
             }
 
-            Task newTask(task);
-            dayPlan.push_back(newTask);
+            for(auto &day : dayPlan) {
+                if(task==day.getTask()) {
+                    cout << "\nTakie zadanie jest juz wpisane!\n\n";
+                    taskExists = true;
+                    break;
+                }
+            }
+
+            if(!taskExists) {
+                Task newTask(task);
+                dayPlan.push_back(newTask);
+            }
         } else if(choice == 'r') {
             cout << "Podaj numer zadania do usuniecia:\n";
             cin >> TaskNumber;
@@ -136,7 +153,10 @@ void Day::caseTasksInList() {
             removeTask(TaskNumber);
         } else if(choice == 'd') {
             removeAllTasks();
-        } else if(choice == 'q') {
+        } else if(choice == 's') {
+            this->printTasks();
+        }
+        else if(choice == 'q') {
             return;
         } else {
             cout << "\nBledny wybor...\n";

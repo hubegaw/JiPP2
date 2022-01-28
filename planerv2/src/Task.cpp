@@ -11,17 +11,24 @@ Task::Task() {
 Task::Task(string description) {
     task = description;
 }
-/*
-Task::~Task() {
-    cout << "uruchomiono destruktor zadan!\n";
+
+string Task::getTask() const{
+    return this->task;
 }
-*/
+
 bool Task::checkIfTaskExists(int TaskNumber, int size) {
     if(TaskNumber < 1 && TaskNumber > size) {
         cout << "\nNie ma takiego zadania!\n\n";
         return false;
     }
     return true;
+}
+
+bool Task::operator==(const Task &otherTask) const {
+    if(this->task == otherTask.getTask()) {
+        return true;
+    }
+    return false;
 }
 
 void Task::printTask() {
@@ -45,13 +52,5 @@ int Task::getStartTime() {
 
 int Task::getEndTime() {
     return this->endTime;
-}
-
-bool Task::checkIfTasksOverlap(Task otherTask) {
-    if((this->startTime <= otherTask.getStartTime() && this->endTime <= otherTask.getEndTime())
-        || (this->startTime >= otherTask.getStartTime() && this->endTime >= otherTask.getEndTime())) {
-        return true;
-    }
-    return false;
 }
 */
