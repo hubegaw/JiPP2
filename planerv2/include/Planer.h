@@ -4,10 +4,6 @@
 #define WeekSize 7
 
 class Planer {
-protected:
-    std::string dayName;
-
-    std::string week[WeekSize] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 public:
 
     /**

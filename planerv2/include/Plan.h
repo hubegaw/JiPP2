@@ -8,6 +8,7 @@
 
 class Plan : public Planer, public Day {
 private:
+    std::string week[WeekSize] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
     /**
      * container for days in plan (week)
      */

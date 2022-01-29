@@ -150,8 +150,10 @@ void Day::caseTasksInList() {
             }
 
             removeTask(TaskNumber);
+            dayPlan.shrink_to_fit();
         } else if(choice == 'd') {
             removeAllTasks();
+            dayPlan.shrink_to_fit();
         } else if(choice == 's') {
             this->printTasks();
         }
